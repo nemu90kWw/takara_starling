@@ -1,0 +1,8 @@
+
+bin/
+bin-debug/
+bin-release/
+
+obj/
+/*.as3proj
+.settings/
