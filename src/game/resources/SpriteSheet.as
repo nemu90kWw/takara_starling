@@ -31,9 +31,13 @@ package game.resources
 			return atlas;
 		}
 		
-		public static function getImage(name:String):Image
+		public static function getImage(name:String, frame:int=0):Image
 		{
-			return new Image(getTextureAtlas().getTexture(name));
+			// ４桁でゼロパディング
+			var frameText:String = ("000" + frame).slice(-4);
+			var image:Image = new Image(getTextureAtlas().getTexture(name+frameText));
+			
+			return image;
 		}
 	}
 }

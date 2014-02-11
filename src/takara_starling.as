@@ -39,7 +39,7 @@ class Root extends Sprite
 	
 	public function Root()
 	{
-		var bg:Image = SpriteSheet.getImage("OBJ_BACK0000");
+		var bg:Image = SpriteSheet.getImage("OBJ_BACK");
 		
 		bg.scaleX = bg.scaleY = 4;
 		addChild(bg);
