@@ -27,6 +27,7 @@ package
 		}
 	}
 }
+
 import game.resources.SpriteSheet;
 
 import starling.display.Image;
@@ -43,5 +44,22 @@ class Root extends Sprite
 		
 		bg.scaleX = bg.scaleY = 4;
 		addChild(bg);
+		
+		var player:Player = new Player();
+		
+		addChild(player);
+	}
+}
+
+class Player extends Sprite
+{
+	public function Player()
+	{
+		var image:Image = SpriteSheet.getImage("OBJ_PLAYER");
+		
+		image.x = 540;
+		image.y = 1200;
+		
+		addChild(image);
 	}
 }
