@@ -7,7 +7,7 @@ package
 	import starling.utils.RectangleUtil;
 	import starling.utils.ScaleMode;
 	
-	[SWF(frameRate="60", backgroundColor="#008080"]
+	[SWF(frameRate="60", backgroundColor="#000000"]
 	public class takara_starling extends Sprite
 	{
 		private var star:Starling;
@@ -27,7 +27,9 @@ package
 		}
 	}
 }
-import starling.display.Quad;
+import game.resources.SpriteSheet;
+
+import starling.display.Image;
 import starling.display.Sprite;
 
 class Root extends Sprite
@@ -37,15 +39,9 @@ class Root extends Sprite
 	
 	public function Root()
 	{
-		var quad:Quad = new Quad(STAGE_WIDTH, STAGE_HEIGHT);
-		quad.x = 0;
-		quad.y = 0;
+		var bg:Image = SpriteSheet.getImage("OBJ_BACK0000");
 		
-		var quad2:Quad = new Quad(STAGE_WIDTH-20, STAGE_HEIGHT-20, 0);
-		quad2.x = 10;
-		quad2.y = 10;
-		
-		addChild(quad);
-		addChild(quad2);
+		bg.scaleX = bg.scaleY = 4;
+		addChild(bg);
 	}
 }
