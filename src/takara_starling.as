@@ -32,22 +32,31 @@ import game.resources.SpriteSheet;
 
 import starling.display.Image;
 import starling.display.Sprite;
+import starling.events.Event;
 
 class Root extends Sprite
 {
+	// 4:3
 	public static const STAGE_WIDTH:uint = 1080;
 	public static const STAGE_HEIGHT:uint = 1440;
+
+	private var player:Player;
 	
 	public function Root()
 	{
 		var bg:Image = SpriteSheet.getImage("OBJ_BACK");
-		
 		bg.scaleX = bg.scaleY = 4;
 		addChild(bg);
 		
-		var player:Player = new Player();
-		
+		player = new Player();
 		addChild(player);
+		
+		addEventListener(Event.ENTER_FRAME, onEnterFrame);
+	}
+	
+	private function onEnterFrame():void
+	{
+		player.main();
 	}
 }
 
@@ -57,17 +66,15 @@ class GameObject extends Sprite
 	private var imageName:String;
 	
 	private var _currentFrame:int;
-	public function get currentFrame():int {return _currentFrame;}
-	public function set currentFrame(value:int):void
+	
+	public function main():void
 	{
-		image.texture = SpriteSheet.getImage(imageName, value).texture;
-		_currentFrame = value;
+		
 	}
 	
-	public function GameObject()
-	{
-	}
-	
+	// --------------------------------//
+	// グラフィック処理
+	// --------------------------------//
 	public function setGraphic(name:String):void
 	{
 		imageName = name;
@@ -75,18 +82,27 @@ class GameObject extends Sprite
 		image = SpriteSheet.getImage(name);
 		addChild(image);
 	}
+	
+	public function get currentFrame():int {return _currentFrame;}
+	public function set currentFrame(value:int):void
+	{
+		image.texture = SpriteSheet.getImage(imageName, value).texture;
+		_currentFrame = value;
+	}
 }
 
 class Player extends GameObject
 {
 	public function Player()
 	{
-		super();
-		
 		x = 540;
 		y = 1200;
 		
 		setGraphic("OBJ_PLAYER");
-		currentFrame = 2;
+	}
+	
+	override public function main():void
+	{
+		currentFrame = (currentFrame + 1) % 13;
 	}
 }
