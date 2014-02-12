@@ -28,7 +28,7 @@ package
 			star.start();
 			
 			star.showStats = true;
-			star.showStatsAt("left", "top", 3);
+			star.showStatsAt("left", "top", 2);
 		}
 	}
 }

@@ -5,18 +5,18 @@ package game.object
 	public class Takara extends GameObject
 	{
 		private var count:int;
-		
-		private var vx:Number;
-		private var vy:Number;
-		private var rot:Number;
 		private var shadow:Shadow;
+		
+		public var vx:Number;
+		public var vy:Number;
+		public var rot:Number;
 		
 		override public function initialize():void
 		{
 			//x = 540;
 			//y = 200;
 			
-			vx = 5;
+			vx = Math.random() * 10 - 5;
 			vy = 0;
 			rot = Math.PI/180 * 5;
 			
@@ -56,6 +56,19 @@ package game.object
 			// ミス
 			if(y > 1310)
 			{
+				// パーティクルを飛ばす
+				for(var i:int = 0; i < 10; i++)
+				{
+					var particle:StarParticle = new StarParticle();
+					
+					particle.x = x;
+					particle.y = y;
+					particle.dir = Math.random() * 360;
+					particle.speed = 8 + Math.random() * 32;
+					
+					addObject(particle, GameObjectPool.LAYER_PARTICLE);
+				}
+				
 				vanish();
 				shadow.vanish();
 			}

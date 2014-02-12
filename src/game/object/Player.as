@@ -23,10 +23,10 @@ package game.object
 			//移動
 			if(Input.down == true)
 			{
-				var preX:Number = x;
 				destX = Input.touchX;
 			}
 			
+			var preX:Number = x;
 			x = (x * 4 + destX) / 5;
 			
 			//アニメーション

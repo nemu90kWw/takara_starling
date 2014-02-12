@@ -6,10 +6,12 @@ package game.object
 
 	public class GameObjectPool
 	{
+		// enumほしい
 		public static const LAYER_BG:String = "BG";
 		public static const LAYER_SHADOW:String = "SHADOW";
 		public static const LAYER_TAKARA:String = "TAKARA";
 		public static const LAYER_PLAYER:String = "PLAYER";
+		public static const LAYER_PARTICLE:String = "PARTICLE";
 		
 		private var root:Sprite;
 		
@@ -17,6 +19,7 @@ package game.object
 		private var shadowLayer:GameObjectLayer;
 		private var takaraLayer:GameObjectLayer;
 		private var playerLayer:GameObjectLayer;
+		private var particleLayer:GameObjectLayer;
 		
 		public function GameObjectPool(root:Sprite)
 		{
@@ -26,23 +29,14 @@ package game.object
 			shadowLayer = new GameObjectLayer(this);
 			takaraLayer = new GameObjectLayer(this);
 			playerLayer = new GameObjectLayer(this);
+			particleLayer = new GameObjectLayer(this);
 			
 			// 表示順序
 			root.addChild(bgLayer);
 			root.addChild(shadowLayer);
-			root.addChild(playerLayer);
 			root.addChild(takaraLayer);
-			
-			bgLayer.addObject(new BackGround());
-			playerLayer.addObject(new Player());
-			
-			for (var i:int = 0; i < 10; i++) 
-			{
-				var takara:Takara = new Takara();
-				takara.x = Math.random() * Root.STAGE_WIDTH;
-				takara.y = Math.random() * 500;
-				takaraLayer.addObject(takara);
-			}
+			root.addChild(playerLayer);
+			root.addChild(particleLayer);
 		}
 		
 		public function run():void
@@ -52,9 +46,10 @@ package game.object
 			takaraLayer.execute();
 			playerLayer.execute();
 			shadowLayer.execute();
+			particleLayer.execute();
 		}
 		
-		public function registerObject(obj:GameObject, layer:String):void
+		public function addObject(obj:GameObject, layer:String):void
 		{
 			switch(layer)
 			{
@@ -62,6 +57,7 @@ package game.object
 			case LAYER_SHADOW: shadowLayer.addObject(obj); break;
 			case LAYER_TAKARA: takaraLayer.addObject(obj); break;
 			case LAYER_PLAYER: playerLayer.addObject(obj); break;
+			case LAYER_PARTICLE: particleLayer.addObject(obj); break;
 			}
 		}
 	}

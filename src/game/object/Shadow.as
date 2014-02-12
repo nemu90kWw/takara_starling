@@ -1,7 +1,5 @@
 package game.object
 {
-	import game.core.Input;
-
 	public class Shadow extends GameObject
 	{
 		private var target:GameObject;

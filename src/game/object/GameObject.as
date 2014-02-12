@@ -33,7 +33,7 @@ package game.object
 		// --------------------------------//
 		public function addObject(obj:GameObject, layer:String):void
 		{
-			pool.registerObject(obj, layer);
+			pool.addObject(obj, layer);
 		}
 		
 		public function vanish():void
