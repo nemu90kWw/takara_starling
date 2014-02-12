@@ -33,6 +33,8 @@ import game.resources.SpriteSheet;
 import starling.display.Image;
 import starling.display.Sprite;
 import starling.events.Event;
+import starling.events.TouchEvent;
+import starling.events.TouchPhase;
 
 class Root extends Sprite
 {
@@ -44,6 +46,13 @@ class Root extends Sprite
 	
 	public function Root()
 	{
+		addEventListener(Event.ADDED_TO_STAGE, onRootCreated);
+	}
+	
+	private function onRootCreated(e:Event):void
+	{
+		removeEventListener(Event.ROOT_CREATED, onRootCreated);
+		
 		var bg:Image = SpriteSheet.getImage("OBJ_BACK");
 		bg.scaleX = bg.scaleY = 4;
 		addChild(bg);
@@ -51,12 +60,46 @@ class Root extends Sprite
 		player = new Player();
 		addChild(player);
 		
-		addEventListener(Event.ENTER_FRAME, onEnterFrame);
+		Input.registerListener(this);
+		
+		stage.addEventListener(Event.ENTER_FRAME, onEnterFrame);
 	}
 	
-	private function onEnterFrame():void
+	private function onEnterFrame(e:Event):void
 	{
 		player.main();
+	}
+}
+
+class Input
+{
+	public static var touchX:Number = 0;
+	public static var touchY:Number = 0;
+	
+	public static var down:Boolean = false;
+	
+	public static function registerListener(listener:Sprite):void
+	{
+		listener.addEventListener(TouchEvent.TOUCH, onTouch);
+	}
+	
+	private static function onTouch(e:TouchEvent):void
+	{
+		switch(e.touches[0].phase)
+		{
+		case TouchPhase.BEGAN:
+			touchX = e.touches[0].globalX;
+			touchY = e.touches[0].globalY;
+			down = true;
+			break;
+		case TouchPhase.MOVED:
+			touchX = e.touches[0].globalX;
+			touchY = e.touches[0].globalY;
+			break;
+		case TouchPhase.ENDED:
+			down = false;
+			break;
+		}
 	}
 }
 
@@ -86,6 +129,7 @@ class GameObject extends Sprite
 	public function get currentFrame():int {return _currentFrame;}
 	public function set currentFrame(value:int):void
 	{
+		// TODO 内部で毎回Imageがnewされるため改善の余地あり
 		image.texture = SpriteSheet.getImage(imageName, value).texture;
 		_currentFrame = value;
 	}
@@ -104,5 +148,10 @@ class Player extends GameObject
 	override public function main():void
 	{
 		currentFrame = (currentFrame + 1) % 13;
+		
+		if(Input.down == true)
+		{
+			x = Input.touchX;
+		}
 	}
 }
