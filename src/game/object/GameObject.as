@@ -7,6 +7,9 @@ package game.object
 
 	public class GameObject extends Sprite
 	{
+		public var layer:GameObjectLayer;
+		private var deleteflag:Boolean;
+		
 		private var image:Image;
 		private var imageName:String;
 		
@@ -15,6 +18,19 @@ package game.object
 		public function main():void
 		{
 			
+		}
+		
+		// --------------------------------//
+		// オブジェクト操作
+		// --------------------------------//
+		public function vanish():void
+		{
+			deleteflag = true;
+		}
+		
+		public function exists():Boolean
+		{
+			return !deleteflag;
 		}
 		
 		// --------------------------------//
@@ -31,7 +47,7 @@ package game.object
 		public function get currentFrame():int {return _currentFrame;}
 		public function set currentFrame(value:int):void
 		{
-			// TODO 内部で毎回Imageがnewされるため改善の余地あり
+			// TODO: 内部で毎回Imageがnewされるため改善の余地あり
 			image.texture = SpriteSheet.getImage(imageName, value).texture;
 			_currentFrame = value;
 		}

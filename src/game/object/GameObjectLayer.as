@@ -4,7 +4,6 @@ package game.object
 
 	public class GameObjectLayer extends Sprite
 	{
-		private var parent:Sprite;
 		private var container:Vector.<GameObject>;
 		
 		public function GameObjectLayer()
@@ -15,6 +14,9 @@ package game.object
 		public function addObject(obj:GameObject):GameObject
 		{
 			container.push(obj);
+			
+			obj.layer = this;
+			
 			addChild(obj);
 			return obj;
 		}
@@ -25,7 +27,15 @@ package game.object
 			{
 				container[i].main();
 			}
+			
+			// 削除フラグが立っているものを削除
+			for (i = 0; i < container.length; i++) 
+			{
+				if(container[i].exists() == false)
+				{
+					removeChild(container[i]);
+				}
+			}
 		}
 	}
-
 }

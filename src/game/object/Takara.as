@@ -52,6 +52,7 @@ package game.object
 			// 下はね返り（テスト）
 			if(y > 1340)
 			{
+				vanish();
 				vy = -vy;
 			}
 			
