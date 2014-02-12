@@ -9,10 +9,10 @@ package game.resources
 
 	public class SpriteSheet
 	{
-		[Embed(source = "../../sprites.png")]
+		[Embed(source = "sprites.png")]
 		private static var SpriteBitmap:Class;
 		
-		[Embed(source = "../../sprites.xml", mimeType = "application/octet-stream")]
+		[Embed(source = "sprites.xml", mimeType = "application/octet-stream")]
 		private static var SpriteFormat:Class;
 		
 		private static var spriteBitmap:Bitmap;
