@@ -43,6 +43,7 @@ class Root extends Sprite
 	public static const STAGE_HEIGHT:uint = 1440;
 
 	private var player:Player;
+	private var takara:Takara;
 	
 	public function Root()
 	{
@@ -54,11 +55,14 @@ class Root extends Sprite
 		removeEventListener(Event.ROOT_CREATED, onRootCreated);
 		
 		var bg:Image = SpriteSheet.getImage("OBJ_BACK");
-		bg.scaleX = bg.scaleY = 4;
+		bg.scaleX = bg.scaleY = 4;		// 背景画像は低解像度で格納しているため拡大する
 		addChild(bg);
 		
 		player = new Player();
 		addChild(player);
+		
+		takara = new Takara();
+		addChild(takara);
 		
 		Input.registerListener(this);
 		
@@ -68,6 +72,7 @@ class Root extends Sprite
 	private function onEnterFrame(e:Event):void
 	{
 		player.main();
+		takara.main();
 	}
 }
 
@@ -139,6 +144,7 @@ class Player extends GameObject
 {
 	private var count:int;
 	private var destX:int;
+	
 	public function Player()
 	{
 		x = 540;
@@ -167,14 +173,71 @@ class Player extends GameObject
 		else if(x - preX > 12) {
 			currentFrame = 10+count%3;
 		}
-		else if(x - preX < -4) {
+		else if(x - preX < -2) {
 			currentFrame = 1+count%3;
 		}
-		else if(x - preX > 4) {
+		else if(x - preX > 2) {
 			currentFrame = 4+count%3;
 		}
 		else {
 			currentFrame = 0;
+		}
+		
+		count++;
+	}
+}
+
+class Takara extends GameObject
+{
+	private var count:int;
+	
+	private var vx:Number;
+	private var vy:Number;
+	private var rot:Number;
+	
+	public function Takara()
+	{
+		x = 540;
+		y = 200;
+		
+		vx = 5;
+		vy = 0;
+		rot = Math.PI/180 * 5;
+		
+		setGraphic("OBJ_TAKARA");
+	}
+	
+	override public function main():void
+	{
+		// 移動
+		x += vx;
+		y += vy;
+		
+		vy += 0.1;
+		
+		rotation += rot;
+		rot /= 1.003;
+		
+		// 画面端はね返り
+		if(x < 0)
+		{
+			x = 0;
+			
+			vx = -vx/1.5;
+			rot /= 1.5;
+		}
+		if(x > Root.STAGE_WIDTH)
+		{
+			x = Root.STAGE_WIDTH;
+			
+			vx = -vx/1.5;
+			rot /= 1.5;
+		}
+		
+		// 下はね返り（テスト）
+		if(y > 1340)
+		{
+			vy = -vy;
 		}
 		
 		count++;
