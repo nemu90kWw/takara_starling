@@ -4,9 +4,6 @@ package game.object
 
 	public class BackGround extends GameObject
 	{
-		private var count:int;
-		private var destX:int;
-		
 		public function BackGround()
 		{
 			setGraphic("OBJ_BACK");

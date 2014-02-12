@@ -7,7 +7,7 @@ package game.object
 		private var count:int;
 		private var destX:int;
 		
-		public function Player()
+		override public function initialize():void
 		{
 			x = 540;
 			y = 1200;
@@ -15,6 +15,7 @@ package game.object
 			destX = 540;
 			
 			setGraphic("OBJ_PLAYER");
+			addObject(new Shadow(this), GameObjectPool.LAYER_SHADOW);
 		}
 		
 		override public function main():void

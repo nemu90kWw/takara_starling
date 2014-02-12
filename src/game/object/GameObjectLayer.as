@@ -4,19 +4,22 @@ package game.object
 
 	public class GameObjectLayer extends Sprite
 	{
+		private var pool:GameObjectPool;
 		private var container:Vector.<GameObject>;
 		
-		public function GameObjectLayer()
+		public function GameObjectLayer(pool:GameObjectPool)
 		{
+			this.pool = pool;
 			container = new Vector.<GameObject>;
 		}
 		
 		public function addObject(obj:GameObject):GameObject
 		{
+			obj.pool = pool;
+			
+			obj.initialize();
+			
 			container.push(obj);
-			
-			obj.layer = this;
-			
 			addChild(obj);
 			return obj;
 		}

@@ -10,10 +10,10 @@ package game.object
 		private var vy:Number;
 		private var rot:Number;
 		
-		public function Takara()
+		override public function initialize():void
 		{
-			x = 540;
-			y = 200;
+			//x = 540;
+			//y = 200;
 			
 			vx = 5;
 			vy = 0;

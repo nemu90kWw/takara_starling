@@ -7,13 +7,21 @@ package game.object
 
 	public class GameObject extends Sprite
 	{
-		public var layer:GameObjectLayer;
+		public var pool:GameObjectPool;
 		private var deleteflag:Boolean;
 		
 		private var image:Image;
 		private var imageName:String;
 		
 		private var _currentFrame:int;
+		
+		// --------------------------------//
+		// 共通処理
+		// --------------------------------//
+		public function initialize():void
+		{
+			
+		}
 		
 		public function main():void
 		{
@@ -23,6 +31,11 @@ package game.object
 		// --------------------------------//
 		// オブジェクト操作
 		// --------------------------------//
+		public function addObject(obj:GameObject, layer:String):void
+		{
+			pool.registerObject(obj, layer);
+		}
+		
 		public function vanish():void
 		{
 			deleteflag = true;
