@@ -18,6 +18,11 @@ package game.object
 		override public function main():void
 		{
 			x = target.x;
+			
+			var float:Number = y - target.y;
+			scaleX = 1 - float / 3000;
+			scaleY = 1 - float / 3000;
+			alpha = 1 - float / 1500;
 		}
 	}
 }
