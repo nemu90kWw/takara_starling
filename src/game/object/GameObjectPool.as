@@ -60,5 +60,19 @@ package game.object
 			case LAYER_PARTICLE: particleLayer.addObject(obj); break;
 			}
 		}
+		
+		public function getObjectList(layer:String):Vector.<GameObject>
+		{
+			switch(layer)
+			{
+			case LAYER_BG: return bgLayer.container; break;
+			case LAYER_SHADOW: return shadowLayer.container; break;
+			case LAYER_TAKARA: return takaraLayer.container; break;
+			case LAYER_PLAYER: return playerLayer.container; break;
+			case LAYER_PARTICLE: return particleLayer.container; break;
+			}
+			
+			return null;
+		}
 	}
 }

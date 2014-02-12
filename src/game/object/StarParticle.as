@@ -24,17 +24,17 @@ package game.object
 			x += Math.cos(Math.PI / 180 *dir) * speed;
 			y += Math.sin(Math.PI / 180 *dir) * speed;
 			
-			if(count > 2)
+			if(count > 5)
 			{
-				scaleX /= 1.06;
-				scaleY /= 1.06;
+				scaleX /= 1.05;
+				scaleY /= 1.05;
 			}
-			if(count > 40)
+			if(count > 50)
 			{
 				alpha /= 1.2;
 			}
 			
-			if(count == 80)
+			if(count == 100)
 			{
 				vanish();
 			}

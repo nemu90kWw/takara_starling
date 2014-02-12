@@ -5,7 +5,7 @@ package game.object
 	public class GameObjectLayer extends Sprite
 	{
 		private var pool:GameObjectPool;
-		private var container:Vector.<GameObject>;
+		public var container:Vector.<GameObject>;
 		
 		public function GameObjectLayer(pool:GameObjectPool)
 		{

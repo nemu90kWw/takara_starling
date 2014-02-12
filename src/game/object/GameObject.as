@@ -36,6 +36,11 @@ package game.object
 			pool.addObject(obj, layer);
 		}
 		
+		public function getObjectList(layer:String):Vector.<GameObject>
+		{
+			return pool.getObjectList(layer);
+		}
+		
 		public function vanish():void
 		{
 			deleteflag = true;
