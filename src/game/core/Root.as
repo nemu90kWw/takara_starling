@@ -1,10 +1,10 @@
 package game.core
 {
+	import game.object.BackGround;
+	import game.object.GameObjectLayer;
 	import game.object.Player;
 	import game.object.Takara;
-	import game.resources.SpriteSheet;
 	
-	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
 
@@ -14,27 +14,38 @@ package game.core
 		public static const STAGE_WIDTH:uint = 1080;
 		public static const STAGE_HEIGHT:uint = 1440;
 		
-		private var player:Player;
-		private var takara:Takara;
+		private var bgLayer:GameObjectLayer;
+		private var takaraLayer:GameObjectLayer;
+		private var playerLayer:GameObjectLayer;
 		
 		public function Root()
 		{
-			addEventListener(Event.ADDED_TO_STAGE, onRootCreated);
+			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 		}
 		
-		private function onRootCreated(e:Event):void
+		private function onAddedToStage(e:Event):void
 		{
-			removeEventListener(Event.ROOT_CREATED, onRootCreated);
+			removeEventListener(Event.ROOT_CREATED, onAddedToStage);
 			
-			var bg:Image = SpriteSheet.getImage("OBJ_BACK");
-			bg.scaleX = bg.scaleY = 4;		// 背景画像は低解像度で格納しているため拡大する
-			addChild(bg);
+			bgLayer = new GameObjectLayer();
+			takaraLayer = new GameObjectLayer();
+			playerLayer = new GameObjectLayer();
 			
-			player = new Player();
-			addChild(player);
+			// 表示順序
+			addChild(bgLayer);
+			addChild(playerLayer);
+			addChild(takaraLayer);
 			
-			takara = new Takara();
-			addChild(takara);
+			bgLayer.addObject(new BackGround());
+			playerLayer.addObject(new Player());
+			
+			for (var i:int = 0; i < 10; i++) 
+			{
+				var takara:Takara = new Takara();
+				takara.x = Math.random() * STAGE_WIDTH;
+				takara.y = Math.random() * 500;
+				playerLayer.addObject(takara);
+			}
 			
 			Input.registerListener(this);
 			
@@ -43,8 +54,10 @@ package game.core
 		
 		private function onEnterFrame(e:Event):void
 		{
-			player.main();
-			takara.main();
+			// 処理順序
+			bgLayer.execute();
+			takaraLayer.execute();
+			playerLayer.execute();
 		}
 	}
 }

@@ -26,6 +26,9 @@ package
 			star.stage.stageWidth = Root.STAGE_WIDTH;
 			star.stage.stageHeight = Root.STAGE_HEIGHT;
 			star.start();
+			
+			star.showStats = true;
+			star.showStatsAt("left", "top", 3);
 		}
 	}
 }
