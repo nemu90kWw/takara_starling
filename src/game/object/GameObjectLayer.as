@@ -37,6 +37,8 @@ package game.object
 				if(container[i].exists() == false)
 				{
 					removeChild(container[i]);
+					container.splice(i, 1);
+					i--;
 				}
 			}
 		}

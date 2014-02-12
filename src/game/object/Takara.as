@@ -9,6 +9,7 @@ package game.object
 		private var vx:Number;
 		private var vy:Number;
 		private var rot:Number;
+		private var shadow:Shadow;
 		
 		override public function initialize():void
 		{
@@ -20,6 +21,9 @@ package game.object
 			rot = Math.PI/180 * 5;
 			
 			setGraphic("OBJ_TAKARA");
+			
+			shadow = new Shadow(this);
+			addObject(shadow, GameObjectPool.LAYER_SHADOW);
 		}
 		
 		override public function main():void
@@ -49,11 +53,11 @@ package game.object
 				rot /= 1.5;
 			}
 			
-			// 下はね返り（テスト）
-			if(y > 1340)
+			// ミス
+			if(y > 1310)
 			{
 				vanish();
-				vy = -vy;
+				shadow.vanish();
 			}
 			
 			count++;

@@ -41,7 +41,7 @@ package game.object
 				var takara:Takara = new Takara();
 				takara.x = Math.random() * Root.STAGE_WIDTH;
 				takara.y = Math.random() * 500;
-				playerLayer.addObject(takara);
+				takaraLayer.addObject(takara);
 			}
 		}
 		

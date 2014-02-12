@@ -20,12 +20,12 @@ package game.object
 		// --------------------------------//
 		public function initialize():void
 		{
-			
+			// 参照パラメータ設定後に呼ばれる処理
 		}
 		
 		public function main():void
 		{
-			
+			// 毎フレーム処理
 		}
 		
 		// --------------------------------//
