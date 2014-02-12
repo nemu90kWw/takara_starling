@@ -51,15 +51,42 @@ class Root extends Sprite
 	}
 }
 
-class Player extends Sprite
+class GameObject extends Sprite
+{
+	private var image:Image;
+	private var imageName:String;
+	
+	private var _currentFrame:int;
+	public function get currentFrame():int {return _currentFrame;}
+	public function set currentFrame(value:int):void
+	{
+		image.texture = SpriteSheet.getImage(imageName, value).texture;
+		_currentFrame = value;
+	}
+	
+	public function GameObject()
+	{
+	}
+	
+	public function setGraphic(name:String):void
+	{
+		imageName = name;
+		
+		image = SpriteSheet.getImage(name);
+		addChild(image);
+	}
+}
+
+class Player extends GameObject
 {
 	public function Player()
 	{
-		var image:Image = SpriteSheet.getImage("OBJ_PLAYER");
+		super();
 		
-		image.x = 540;
-		image.y = 1200;
+		x = 540;
+		y = 1200;
 		
-		addChild(image);
+		setGraphic("OBJ_PLAYER");
+		currentFrame = 2;
 	}
 }
