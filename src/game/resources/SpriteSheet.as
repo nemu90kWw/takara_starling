@@ -4,19 +4,24 @@ package game.resources
 	import flash.geom.Point;
 	
 	import starling.display.Image;
+	import starling.text.BitmapFont;
+	import starling.text.TextField;
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
 
 	public class SpriteSheet
 	{
+		[Embed(source = "font.png")]
+		private static var FontBitmap:Class;
+		
+		[Embed(source = "font.fnt", mimeType = "application/octet-stream")]
+		private static var FontFormat:Class;
+		
 		[Embed(source = "sprites.png")]
 		private static var SpriteBitmap:Class;
 		
 		[Embed(source = "sprites.xml", mimeType = "application/octet-stream")]
 		private static var SpriteFormat:Class;
-		
-		private static var spriteBitmap:Bitmap;
-		private static var spriteFormat:XML;
 		
 		private static var atlas:TextureAtlas;
 		private static var pivotList:Object;
@@ -25,8 +30,8 @@ package game.resources
 		{
 			if (atlas == null)
 			{
-				spriteBitmap = Bitmap(new SpriteBitmap());
-				spriteFormat = XML(new SpriteFormat());
+				var spriteBitmap:Bitmap = Bitmap(new SpriteBitmap());
+				var spriteFormat:XML = XML(new SpriteFormat());
 				
 				atlas = new TextureAtlas(Texture.fromBitmap(spriteBitmap), spriteFormat);
 				
@@ -47,6 +52,15 @@ package game.resources
 			return atlas;
 		}
 		
+		public static function registerBitmapFont():void
+		{
+			var spriteBitmap:Texture = Texture.fromBitmap(new FontBitmap());
+			var spriteFormat:XML = XML(new FontFormat());
+			var font:BitmapFont = new BitmapFont(spriteBitmap, spriteFormat);
+			
+			TextField.registerBitmapFont(font, "BitmapFont");
+		}
+
 		public static function getImage(name:String, frame:int=0):Image
 		{
 			// フレーム番号を4桁でゼロパディングして読み込む

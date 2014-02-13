@@ -6,6 +6,7 @@ package game.scene
 	import game.object.LevelUp;
 	import game.object.Player;
 	import game.object.Takara;
+	import game.object.Text;
 	
 	import starling.display.Sprite;
 	
@@ -19,6 +20,8 @@ package game.scene
 		
 		private var level:int;
 		private var levelUpBorder:int;
+
+		private var score:Text;
 		
 		public function MainGameScene(target:Sprite)
 		{
@@ -29,6 +32,8 @@ package game.scene
 			objPool.addObject(new Player(), GameObjectPool.LAYER_PLAYER);
 			
 			addTakara();
+			score = new Text();
+			objPool.addObject(score, GameObjectPool.LAYER_MESSAGE);
 			
 			level = 1;
 			levelUpBorder = 2;
@@ -42,14 +47,14 @@ package game.scene
 			{
 				level++;
 				levelUpBorder += level + 1;
-				trace(gamedata.score);
-				trace(levelUpBorder);
 				addTakara();
 				
 				objPool.addObject(new LevelUp(), GameObjectPool.LAYER_MESSAGE);
 			}
 			
 			objPool.run();
+			
+			score.text = "SCORE:"+gamedata.score;
 			count++;
 		}
 		
