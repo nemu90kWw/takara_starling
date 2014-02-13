@@ -69,5 +69,13 @@ package game.object
 			image.texture = SpriteSheet.getImage(imageName, value).texture;
 			_currentFrame = value;
 		}
+		
+		// --------------------------------//
+		// データ操作
+		// --------------------------------//
+		public function addScore(value:int):void
+		{
+			pool.scene.gamedata.score++;
+		}
 	}
 }

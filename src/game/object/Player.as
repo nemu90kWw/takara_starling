@@ -69,7 +69,7 @@ package game.object
 					// 位置の差と移動速度による打ち上げ方の違いを設定
 					var gap:int = (takara.x - x) / 2 + speed * 2;
 					takara.vx += gap / 8;
-					takara.vy = -16+Math.abs(gap) / 30;
+					takara.vy = -14+Math.abs(gap) / 35;
 					takara.rot += (Math.PI / 180) * gap / 10;
 					
 					// 中間点からパーティクルを出す
@@ -84,6 +84,8 @@ package game.object
 						
 						addObject(particle, GameObjectPool.LAYER_PARTICLE);
 					}
+					
+					addScore(10);
 				}
 			}
 			

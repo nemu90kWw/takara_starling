@@ -32,7 +32,10 @@ package game.object
 			x += vx;
 			y += vy;
 			
-			vy += 0.1;
+			vy += 0.07;
+			if(vy > 11) {
+				vy = 11;
+			}
 			
 			rotation += rot;
 			rot /= 1.003;

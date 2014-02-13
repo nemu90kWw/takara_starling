@@ -1,6 +1,7 @@
 package game.object
 {
 	import game.core.Root;
+	import game.scene.MainGameScene;
 	
 	import starling.display.Sprite;
 
@@ -13,7 +14,8 @@ package game.object
 		public static const LAYER_PLAYER:String = "PLAYER";
 		public static const LAYER_PARTICLE:String = "PARTICLE";
 		
-		private var root:Sprite;
+		private var target:Sprite;
+		public var scene:MainGameScene;
 		
 		private var bgLayer:GameObjectLayer;
 		private var shadowLayer:GameObjectLayer;
@@ -21,9 +23,10 @@ package game.object
 		private var playerLayer:GameObjectLayer;
 		private var particleLayer:GameObjectLayer;
 		
-		public function GameObjectPool(root:Sprite)
+		public function GameObjectPool(target:Sprite, scene:MainGameScene)
 		{
-			this.root = root;
+			this.target = target;
+			this.scene = scene;
 			
 			bgLayer = new GameObjectLayer(this);
 			shadowLayer = new GameObjectLayer(this);
@@ -32,11 +35,11 @@ package game.object
 			particleLayer = new GameObjectLayer(this);
 			
 			// 表示順序
-			root.addChild(bgLayer);
-			root.addChild(shadowLayer);
-			root.addChild(takaraLayer);
-			root.addChild(playerLayer);
-			root.addChild(particleLayer);
+			target.addChild(bgLayer);
+			target.addChild(shadowLayer);
+			target.addChild(takaraLayer);
+			target.addChild(playerLayer);
+			target.addChild(particleLayer);
 		}
 		
 		public function run():void
