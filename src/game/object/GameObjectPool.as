@@ -13,6 +13,7 @@ package game.object
 		public static const LAYER_TAKARA:String = "TAKARA";
 		public static const LAYER_PLAYER:String = "PLAYER";
 		public static const LAYER_PARTICLE:String = "PARTICLE";
+		public static const LAYER_MESSAGE:String = "MESSAGE";
 		
 		private var target:Sprite;
 		public var scene:MainGameScene;
@@ -22,6 +23,7 @@ package game.object
 		private var takaraLayer:GameObjectLayer;
 		private var playerLayer:GameObjectLayer;
 		private var particleLayer:GameObjectLayer;
+		private var messageLayer:GameObjectLayer;
 		
 		public function GameObjectPool(target:Sprite, scene:MainGameScene)
 		{
@@ -33,6 +35,7 @@ package game.object
 			takaraLayer = new GameObjectLayer(this);
 			playerLayer = new GameObjectLayer(this);
 			particleLayer = new GameObjectLayer(this);
+			messageLayer = new GameObjectLayer(this);
 			
 			// 表示順序
 			target.addChild(bgLayer);
@@ -40,6 +43,7 @@ package game.object
 			target.addChild(takaraLayer);
 			target.addChild(playerLayer);
 			target.addChild(particleLayer);
+			target.addChild(messageLayer);
 		}
 		
 		public function run():void
@@ -50,6 +54,7 @@ package game.object
 			playerLayer.execute();
 			shadowLayer.execute();
 			particleLayer.execute();
+			messageLayer.execute();
 		}
 		
 		public function addObject(obj:GameObject, layer:String):void
@@ -61,6 +66,7 @@ package game.object
 			case LAYER_TAKARA: takaraLayer.addObject(obj); break;
 			case LAYER_PLAYER: playerLayer.addObject(obj); break;
 			case LAYER_PARTICLE: particleLayer.addObject(obj); break;
+			case LAYER_MESSAGE: messageLayer.addObject(obj); break;
 			}
 		}
 		
@@ -73,6 +79,7 @@ package game.object
 			case LAYER_TAKARA: return takaraLayer.container; break;
 			case LAYER_PLAYER: return playerLayer.container; break;
 			case LAYER_PARTICLE: return particleLayer.container; break;
+			case LAYER_MESSAGE: return messageLayer.container; break;
 			}
 			
 			return null;

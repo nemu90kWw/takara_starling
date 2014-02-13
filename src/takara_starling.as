@@ -1,11 +1,13 @@
 package
 {
 	import flash.display.Sprite;
+	import flash.display3D.Context3DBlendFactor;
 	import flash.geom.Rectangle;
 	
 	import game.core.Root;
 	
 	import starling.core.Starling;
+	import starling.display.BlendMode;
 	import starling.utils.RectangleUtil;
 	import starling.utils.ScaleMode;
 	
@@ -16,6 +18,10 @@ package
 		
 		public function takara_starling()
 		{
+			// ブレンドに減算半透明を追加
+			BlendMode.register("subtract", Context3DBlendFactor.ZERO, Context3DBlendFactor.ONE_MINUS_SOURCE_COLOR);
+			
+			// 黒帯付きで拡大
 			var viewPort:Rectangle = RectangleUtil.fit(
 				new Rectangle(0, 0, Root.STAGE_WIDTH, Root.STAGE_HEIGHT),
 				new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight),

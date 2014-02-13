@@ -3,6 +3,7 @@ package game.scene
 	import game.core.GameData;
 	import game.object.BackGround;
 	import game.object.GameObjectPool;
+	import game.object.LevelUp;
 	import game.object.Player;
 	import game.object.Takara;
 	
@@ -16,6 +17,9 @@ package game.scene
 		private var count:int;
 		public var gamedata:GameData;
 		
+		private var level:int;
+		private var levelUpBorder:int;
+		
 		public function MainGameScene(target:Sprite)
 		{
 			gamedata = new GameData();
@@ -25,11 +29,26 @@ package game.scene
 			objPool.addObject(new Player(), GameObjectPool.LAYER_PLAYER);
 			
 			addTakara();
+			
+			level = 1;
+			levelUpBorder = 2;
+			
 			count = 0;
 		}
 		
 		public function main():void
 		{
+			if(gamedata.score >= levelUpBorder)
+			{
+				level++;
+				levelUpBorder += level + 1;
+				trace(gamedata.score);
+				trace(levelUpBorder);
+				addTakara();
+				
+				objPool.addObject(new LevelUp(), GameObjectPool.LAYER_MESSAGE);
+			}
+			
 			objPool.run();
 			count++;
 		}
