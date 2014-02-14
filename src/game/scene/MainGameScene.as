@@ -10,6 +10,7 @@ package game.scene
 	import game.object.LevelUp;
 	import game.object.MissCount;
 	import game.object.Player;
+	import game.object.ReadyGo;
 	import game.object.Takara;
 	import game.object.Text;
 	
@@ -17,11 +18,14 @@ package game.scene
 	
 	public class MainGameScene extends SceneBase
 	{
+		private const STATE_READY:String = "ready";
 		private const STATE_MAINGAME:String = "maingame";
 		private const STATE_GAMEOVER:String = "gameover";
 		
 		public var gamedata:GameData;
 		private var state:String;
+		
+		private var player:Player;
 		
 		private var tossCount:int;
 		private var level:int;
@@ -41,7 +45,7 @@ package game.scene
 			level = 1;
 			levelUpBorder = 2;
 			
-			state = STATE_MAINGAME;
+			state = STATE_READY;
 			
 			// 背景
 			objPool.addObject(new BackGround(), GameObjectPool.LAYER_BG);
@@ -61,20 +65,16 @@ package game.scene
 			objPool.addObject(missText, GameObjectPool.LAYER_MESSAGE);
 			
 			// 初期配置
+			player = new Player();
+			objPool.addObject(player, GameObjectPool.LAYER_PLAYER);
+			
 			var takara:Takara = addTakara();
-			takara.x = MasterViewPort.STAGE_WIDTH / 2;
-			takara.y = 200;
+			takara.x = MasterViewPort.STAGE_WIDTH / 2 + 10;
+			takara.y = 128;
 			takara.vx = 0;
 			takara.vy = 0;
 			takara.rotation = 0.4;
 			takara.rot = 0.01;
-			
-			objPool.addObject(new Player(), GameObjectPool.LAYER_PLAYER);
-			
-			for (var i:int = 0; i < 10; i++) 
-			{
-				addTakara();
-			}
 			
 			objPool.run();
 		}
@@ -86,11 +86,30 @@ package game.scene
 		{
 			switch(state)
 			{
+			case STATE_READY: actionReady(); break;
 			case STATE_MAINGAME: actionMainGame(); break;
 			case STATE_GAMEOVER: actionGameOver(); break;
 			}
 			
 			count++;
+		}
+		
+		private function actionReady():void
+		{
+			if(count == 0)
+			{
+				setMessage(new ReadyGo());
+			}
+			
+			objPool.run();
+			
+			if(count == 160)
+			{
+				player.operate = true;
+				
+				state = STATE_MAINGAME;
+				count = -1;
+			}
 		}
 		
 		private function actionMainGame():void
@@ -123,14 +142,14 @@ package game.scene
 				objPool.lock = true;
 			}
 			
-			if(count == 100)
+			if(count == 150)
 			{
 				objPool.addObject(new FadeOut(), GameObjectPool.LAYER_SCREEN);
 			}
 			
 			objPool.run();
 			
-			if(count == 150)
+			if(count == 200)
 			{
 				root.changeScene(new TitleScene(target));
 				return;
@@ -157,6 +176,13 @@ package game.scene
 			objPool.addObject(obj, GameObjectPool.LAYER_MESSAGE);
 			
 			gamedata.miss++;
+			
+			// タカラギコが全て無くなった場合、補填する
+			objPool.update();
+			if(objPool.getObjectList(GameObjectPool.LAYER_TAKARA).length == 0)
+			{
+				addTakara();
+			}
 		}
 		
 		// --------------------------------//

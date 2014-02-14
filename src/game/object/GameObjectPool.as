@@ -76,8 +76,14 @@ package game.object
 				shadowLayer.execute();
 				particleLayer.execute();
 				messageLayer.execute();
+				screenLayer.execute();
 			}
-			screenLayer.execute();
+			else
+			{
+				particleLayer.execute();
+				messageLayer.execute();
+				screenLayer.execute();
+			}
 			
 			// 全て実行後、削除更新処理
 			update();
