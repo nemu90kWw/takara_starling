@@ -1,13 +1,13 @@
 package game.object
 {
-	import game.core.Root;
+	import game.core.MasterViewPort;
 
 	public class GameOver extends GameObject
 	{
 		public function GameOver()
 		{
-			x = Root.STAGE_WIDTH / 2;
-			y = Root.STAGE_HEIGHT / 2;
+			x = MasterViewPort.STAGE_WIDTH / 2;
+			y = MasterViewPort.STAGE_HEIGHT / 2;
 			blendMode = "subtract";
 			
 			setGraphic("MSG_GAMEOVER");

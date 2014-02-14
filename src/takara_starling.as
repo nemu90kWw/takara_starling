@@ -4,7 +4,7 @@ package
 	import flash.display3D.Context3DBlendFactor;
 	import flash.geom.Rectangle;
 	
-	import game.core.Root;
+	import game.core.MasterViewPort;
 	
 	import starling.core.Starling;
 	import starling.display.BlendMode;
@@ -23,14 +23,14 @@ package
 			
 			// 黒帯付きで拡大
 			var viewPort:Rectangle = RectangleUtil.fit(
-				new Rectangle(0, 0, Root.STAGE_WIDTH, Root.STAGE_HEIGHT),
+				new Rectangle(0, 0, MasterViewPort.STAGE_WIDTH, MasterViewPort.STAGE_HEIGHT),
 				new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight),
 				ScaleMode.SHOW_ALL
 			);
 			
-			star = new Starling(Root, stage, viewPort);
-			star.stage.stageWidth = Root.STAGE_WIDTH;
-			star.stage.stageHeight = Root.STAGE_HEIGHT;
+			star = new Starling(MasterViewPort, stage, viewPort);
+			star.stage.stageWidth = MasterViewPort.STAGE_WIDTH;
+			star.stage.stageHeight = MasterViewPort.STAGE_HEIGHT;
 			star.start();
 			
 			star.showStats = true;

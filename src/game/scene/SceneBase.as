@@ -1,25 +1,21 @@
 package game.scene
 {
-	import game.core.GameData;
-	import game.core.Root;
-	import game.object.BackGround;
 	import game.object.GameObjectPool;
-	import game.object.LevelUp;
-	import game.object.Player;
-	import game.object.Takara;
-	import game.object.Text;
 	
 	import starling.display.Sprite;
 	
-	public class GameScene
+	public class SceneBase
 	{
+		public var root:SceneController;
+		
 		protected var target:Sprite;
 		protected var objPool:GameObjectPool;
 		
 		protected var count:int;
 		
-		public function GameScene(target:Sprite)
+		public function SceneBase(target:Sprite)
 		{
+			this.target = target;
 			objPool = new GameObjectPool(target, this);
 			
 			count = 0;
@@ -27,6 +23,11 @@ package game.scene
 		
 		public function main():void
 		{
+		}
+		
+		public function dispose():void
+		{
+			objPool.dispose();
 		}
 	}
 }

@@ -2,32 +2,28 @@
 <TextureAtlas imagePath="sprites.png">
 	<!-- Created with Adobe Flash Professional version 13.1.0.226 -->
 	<!-- http://www.adobe.com/products/flash.html -->
-	<SubTexture name="MSG_GAMEOVER0000" x="16" y="16" width="1051" height="125" pivotX="525.9" pivotY="62.65"/>
-	<SubTexture name="MSG_LEVELUP0000" x="1083" y="16" width="815" height="109" pivotX="446.1" pivotY="53.7" frameX="0" frameY="0" frameWidth="935" frameHeight="109"/>
-	<SubTexture name="MSG_LEVELUP0001" x="16" y="157" width="875" height="109" frameX="0" frameY="0" frameWidth="935" frameHeight="109"/>
-	<SubTexture name="MSG_LEVELUP0002" x="907" y="157" width="935" height="109"/>
-	<SubTexture name="MSG_MISS0000" x="16" y="282" width="233" height="63" pivotX="0" pivotY="31.15"/>
-	<SubTexture name="MSG_READYGO0000" x="265" y="282" width="759" height="157" pivotX="379.25" pivotY="108.35" frameX="0" frameY="-30" frameWidth="759" frameHeight="217"/>
-	<SubTexture name="MSG_READYGO0001" x="1040" y="282" width="471" height="217" frameX="-144" frameY="0" frameWidth="759" frameHeight="217"/>
-	<SubTexture name="MSG_SCORE0000" x="1527" y="282" width="319" height="63" pivotX="0" pivotY="31.15"/>
-	<SubTexture name="MSG_START0000" x="16" y="515" width="640" height="65" pivotX="320.05" pivotY="32.3"/>
-	<SubTexture name="MSG_TITLE0000" x="672" y="515" width="794" height="218" pivotX="0" pivotY="0" frameX="0" frameY="0" frameWidth="794" frameHeight="222"/>
-	<SubTexture name="MSG_TITLE0001" x="1482" y="515" width="488" height="222" frameX="0" frameY="0" frameWidth="794" frameHeight="222"/>
-	<SubTexture name="OBJ_BACK0000" x="16" y="753" width="272" height="362" pivotX="1" pivotY="1"/>
-	<SubTexture name="OBJ_PLAYER0000" x="304" y="753" width="163" height="243" pivotX="111.85" pivotY="133.2" frameX="-30" frameY="0" frameWidth="223" frameHeight="262"/>
-	<SubTexture name="OBJ_PLAYER0001" x="483" y="753" width="164" height="253" frameX="-19" frameY="-3" frameWidth="223" frameHeight="262"/>
-	<SubTexture name="OBJ_PLAYER0002" x="663" y="753" width="164" height="259" frameX="-19" frameY="-3" frameWidth="223" frameHeight="262"/>
-	<SubTexture name="OBJ_PLAYER0003" x="843" y="753" width="164" height="257" frameX="-19" frameY="-3" frameWidth="223" frameHeight="262"/>
-	<SubTexture name="OBJ_PLAYER0004" x="1023" y="753" width="164" height="253" frameX="-40" frameY="-3" frameWidth="223" frameHeight="262"/>
-	<SubTexture name="OBJ_PLAYER0005" x="1203" y="753" width="164" height="259" frameX="-40" frameY="-3" frameWidth="223" frameHeight="262"/>
-	<SubTexture name="OBJ_PLAYER0006" x="1383" y="753" width="164" height="257" frameX="-40" frameY="-3" frameWidth="223" frameHeight="262"/>
-	<SubTexture name="OBJ_PLAYER0007" x="1563" y="753" width="177" height="248" frameX="0" frameY="-8" frameWidth="223" frameHeight="262"/>
-	<SubTexture name="OBJ_PLAYER0008" x="1756" y="753" width="188" height="254" frameX="0" frameY="-8" frameWidth="223" frameHeight="262"/>
-	<SubTexture name="OBJ_PLAYER0009" x="16" y="1131" width="189" height="252" frameX="0" frameY="-8" frameWidth="223" frameHeight="262"/>
-	<SubTexture name="OBJ_PLAYER0010" x="221" y="1131" width="186" height="248" frameX="-37" frameY="-8" frameWidth="223" frameHeight="262"/>
-	<SubTexture name="OBJ_PLAYER0011" x="423" y="1131" width="182" height="254" frameX="-41" frameY="-8" frameWidth="223" frameHeight="262"/>
-	<SubTexture name="OBJ_PLAYER0012" x="621" y="1131" width="189" height="252" frameX="-34" frameY="-8" frameWidth="223" frameHeight="262"/>
-	<SubTexture name="OBJ_SHADOW0000" x="826" y="1131" width="149" height="53" pivotX="74.7" pivotY="26.7"/>
-	<SubTexture name="OBJ_STAR0000" x="991" y="1131" width="148" height="141" pivotX="74" pivotY="76.95"/>
-	<SubTexture name="OBJ_TAKARA0000" x="1155" y="1131" width="137" height="180" pivotX="64.25" pivotY="90.1"/>
+	<SubTexture name="MSG_GAMEOVER0000" x="810" y="8" width="1051" height="125" pivotX="525.9" pivotY="62.65"/>
+	<SubTexture name="MSG_LEVELUP0000" x="8" y="648" width="815" height="109" pivotX="446.1" pivotY="53.7" frameX="0" frameY="0" frameWidth="935" frameHeight="109"/>
+	<SubTexture name="MSG_LEVELUP0001" x="951" y="531" width="875" height="109" frameX="0" frameY="0" frameWidth="935" frameHeight="109"/>
+	<SubTexture name="MSG_LEVELUP0002" x="8" y="531" width="935" height="109"/>
+	<SubTexture name="MSG_READYGO0000" x="810" y="141" width="759" height="157" pivotX="379.25" pivotY="108.35" frameX="0" frameY="-30" frameWidth="759" frameHeight="217"/>
+	<SubTexture name="MSG_READYGO0001" x="810" y="306" width="471" height="217" frameX="-144" frameY="0" frameWidth="759" frameHeight="217"/>
+	<SubTexture name="MSG_TITLE0000" x="8" y="8" width="794" height="482" pivotX="0" pivotY="0"/>
+	<SubTexture name="OBJ_BACK0000" x="1577" y="141" width="272" height="362" pivotX="1" pivotY="1"/>
+	<SubTexture name="OBJ_PLAYER0000" x="1415" y="904" width="163" height="243" pivotX="111.85" pivotY="133.2" frameX="-30" frameY="0" frameWidth="223" frameHeight="262"/>
+	<SubTexture name="OBJ_PLAYER0001" x="524" y="765" width="164" height="253" frameX="-19" frameY="-3" frameWidth="223" frameHeight="262"/>
+	<SubTexture name="OBJ_PLAYER0002" x="1857" y="141" width="164" height="259" frameX="-19" frameY="-3" frameWidth="223" frameHeight="262"/>
+	<SubTexture name="OBJ_PLAYER0003" x="180" y="765" width="164" height="257" frameX="-19" frameY="-3" frameWidth="223" frameHeight="262"/>
+	<SubTexture name="OBJ_PLAYER0004" x="1794" y="773" width="164" height="253" frameX="-40" frameY="-3" frameWidth="223" frameHeight="262"/>
+	<SubTexture name="OBJ_PLAYER0005" x="8" y="765" width="164" height="259" frameX="-40" frameY="-3" frameWidth="223" frameHeight="262"/>
+	<SubTexture name="OBJ_PLAYER0006" x="352" y="765" width="164" height="257" frameX="-40" frameY="-3" frameWidth="223" frameHeight="262"/>
+	<SubTexture name="OBJ_PLAYER0007" x="1609" y="648" width="177" height="248" frameX="0" frameY="-8" frameWidth="223" frameHeight="262"/>
+	<SubTexture name="OBJ_PLAYER0008" x="1834" y="511" width="188" height="254" frameX="0" frameY="-8" frameWidth="223" frameHeight="262"/>
+	<SubTexture name="OBJ_PLAYER0009" x="831" y="648" width="189" height="252" frameX="0" frameY="-8" frameWidth="223" frameHeight="262"/>
+	<SubTexture name="OBJ_PLAYER0010" x="1415" y="648" width="186" height="248" frameX="-37" frameY="-8" frameWidth="223" frameHeight="262"/>
+	<SubTexture name="OBJ_PLAYER0011" x="1225" y="648" width="182" height="254" frameX="-41" frameY="-8" frameWidth="223" frameHeight="262"/>
+	<SubTexture name="OBJ_PLAYER0012" x="1028" y="648" width="189" height="252" frameX="-34" frameY="-8" frameWidth="223" frameHeight="262"/>
+	<SubTexture name="OBJ_SHADOW0000" x="1869" y="8" width="149" height="53" pivotX="74.7" pivotY="26.7"/>
+	<SubTexture name="OBJ_STAR0000" x="1586" y="904" width="148" height="141" pivotX="74" pivotY="76.95"/>
+	<SubTexture name="OBJ_TAKARA0000" x="1289" y="306" width="137" height="180" pivotX="64.25" pivotY="90.1"/>
 </TextureAtlas>

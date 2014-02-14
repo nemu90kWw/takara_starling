@@ -39,11 +39,25 @@ package game.object
 			{
 				if(container[i].exists() == false)
 				{
+					container[i].dispose();
 					removeChild(container[i]);
 					container.splice(i, 1);
 					i--;
 				}
 			}
+		}
+		
+		override public function dispose():void
+		{
+			super.dispose();
+			
+			// 全削除
+			for (var i:int = 0; i < container.length; i++) 
+			{
+				container[i].dispose();
+				removeChild(container[i]);
+			}
+			container = null;
 		}
 	}
 }

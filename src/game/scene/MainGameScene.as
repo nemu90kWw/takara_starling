@@ -1,7 +1,7 @@
 package game.scene
 {
 	import game.core.GameData;
-	import game.core.Root;
+	import game.core.MasterViewPort;
 	import game.object.BackGround;
 	import game.object.GameObjectPool;
 	import game.object.GameOver;
@@ -13,7 +13,7 @@ package game.scene
 	
 	import starling.display.Sprite;
 	
-	public class MainGameScene extends GameScene
+	public class MainGameScene extends SceneBase
 	{
 		private const STATE_MAINGAME:String = "maingame";
 		private const STATE_GAMEOVER:String = "gameover";
@@ -49,10 +49,10 @@ package game.scene
 			missText = new Text();
 			
 			scoreText.x = 0;
-			scoreText.y = Root.STAGE_HEIGHT - 100;
+			scoreText.y = MasterViewPort.STAGE_HEIGHT - 100;
 			scoreText.text = "SCORE:0";
 			missText.x = 620;
-			missText.y = Root.STAGE_HEIGHT - 100;
+			missText.y = MasterViewPort.STAGE_HEIGHT - 100;
 			missText.text = "MISS:";
 			
 			objPool.addObject(scoreText, GameObjectPool.LAYER_MESSAGE);
@@ -60,7 +60,7 @@ package game.scene
 			
 			// 初期配置
 			var takara:Takara = addTakara();
-			takara.x = Root.STAGE_WIDTH / 2;
+			takara.x = MasterViewPort.STAGE_WIDTH / 2;
 			takara.y = 200;
 			takara.vx = 0;
 			takara.vy = 0;
@@ -68,13 +68,6 @@ package game.scene
 			takara.rot = 0.01;
 			
 			objPool.addObject(new Player(), GameObjectPool.LAYER_PLAYER);
-			
-			addTakara();
-			addTakara();
-			addTakara();
-			addTakara();
-			addTakara();
-			addTakara();
 		}
 		
 		// --------------------------------//
@@ -125,6 +118,11 @@ package game.scene
 				}
 				
 				objPool.addObject(new GameOver(), GameObjectPool.LAYER_MESSAGE);
+			}
+			
+			if(count == 100)
+			{
+				root.changeScene(new TitleScene(target));
 			}
 		}
 		

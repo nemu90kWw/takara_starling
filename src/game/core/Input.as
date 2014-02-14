@@ -1,6 +1,6 @@
 package game.core
 {
-	import starling.display.Sprite;
+	import starling.display.Stage;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 
@@ -11,7 +11,7 @@ package game.core
 		
 		public static var down:Boolean = false;
 		
-		public static function registerListener(listener:Sprite):void
+		public static function registerListener(listener:Stage):void
 		{
 			listener.addEventListener(TouchEvent.TOUCH, onTouch);
 		}

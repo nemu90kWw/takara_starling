@@ -1,7 +1,7 @@
 package game.object
 {
-	import game.core.Root;
-	import game.scene.GameScene;
+	import game.core.MasterViewPort;
+	import game.scene.SceneBase;
 	
 	import starling.display.Sprite;
 
@@ -16,7 +16,7 @@ package game.object
 		public static const LAYER_MESSAGE:String = "MESSAGE";
 		
 		private var target:Sprite;
-		public var scene:GameScene;
+		public var scene:SceneBase;
 		
 		private var bgLayer:GameObjectLayer;
 		private var shadowLayer:GameObjectLayer;
@@ -25,7 +25,7 @@ package game.object
 		private var particleLayer:GameObjectLayer;
 		private var messageLayer:GameObjectLayer;
 		
-		public function GameObjectPool(target:Sprite, scene:GameScene)
+		public function GameObjectPool(target:Sprite, scene:SceneBase)
 		{
 			this.target = target;
 			this.scene = scene;
@@ -44,6 +44,16 @@ package game.object
 			target.addChild(playerLayer);
 			target.addChild(particleLayer);
 			target.addChild(messageLayer);
+		}
+		
+		public function dispose():void
+		{
+			bgLayer.dispose();
+			takaraLayer.dispose();
+			playerLayer.dispose();
+			shadowLayer.dispose();
+			particleLayer.dispose();
+			messageLayer.dispose();
 		}
 		
 		public function run():void

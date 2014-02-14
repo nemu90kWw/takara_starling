@@ -1,19 +1,22 @@
 package game.core
 {
-	import game.scene.GameScene;
+	import game.scene.SceneBase;
 	import game.scene.MainGameScene;
+	import game.scene.SceneController;
+	import game.scene.TitleScene;
 	
 	import starling.display.Sprite;
 	import starling.events.Event;
 
-	public class Root extends Sprite
+	// Starlingで作成される本体
+	public class MasterViewPort extends Sprite
 	{
 		// 4:3
 		public static const STAGE_WIDTH:uint = 1080;
 		public static const STAGE_HEIGHT:uint = 1440;
-		private var scene:GameScene;
+		private var scene:SceneController;
 		
-		public function Root()
+		public function MasterViewPort()
 		{
 			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 		}
@@ -22,16 +25,16 @@ package game.core
 		{
 			removeEventListener(Event.ROOT_CREATED, onAddedToStage);
 			
-			Input.registerListener(this);
+			Input.registerListener(stage);
 			
-			scene = new MainGameScene(this);
+			scene = new SceneController(new TitleScene(this));
 			
 			stage.addEventListener(Event.ENTER_FRAME, onEnterFrame);
 		}
 		
 		private function onEnterFrame(e:Event):void
 		{
-			scene.main();
+			scene.run();
 		}
 	}
 }

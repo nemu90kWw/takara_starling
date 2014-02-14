@@ -29,6 +29,17 @@ package game.object
 			// 毎フレーム処理
 		}
 		
+		override public function dispose():void
+		{
+			super.dispose();
+			
+			if(image != null)
+			{
+				image.dispose();
+				image = null;
+			}
+		}
+		
 		// --------------------------------//
 		// オブジェクト操作
 		// --------------------------------//
