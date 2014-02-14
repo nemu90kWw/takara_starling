@@ -1,5 +1,6 @@
 package game.core
 {
+	import game.scene.GameScene;
 	import game.scene.MainGameScene;
 	
 	import starling.display.Sprite;
@@ -10,7 +11,7 @@ package game.core
 		// 4:3
 		public static const STAGE_WIDTH:uint = 1080;
 		public static const STAGE_HEIGHT:uint = 1440;
-		private var scene:MainGameScene;
+		private var scene:GameScene;
 		
 		public function Root()
 		{

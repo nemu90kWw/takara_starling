@@ -74,6 +74,8 @@ package game.object
 				
 				vanish();
 				shadow.vanish();
+				
+				addMissCount();
 			}
 			
 			count++;

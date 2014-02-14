@@ -1,6 +1,7 @@
 package game.object
 {
 	import game.resources.SpriteSheet;
+	import game.scene.MainGameScene;
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -75,7 +76,18 @@ package game.object
 		// --------------------------------//
 		public function addScore(value:int):void
 		{
-			pool.scene.gamedata.score++;
+			if(pool.scene is MainGameScene == true)
+			{
+				MainGameScene(pool.scene).addScore(value);
+			}
+		}
+		
+		public function addMissCount():void
+		{
+			if(pool.scene is MainGameScene == true)
+			{
+				MainGameScene(pool.scene).addMissCount();
+			}
 		}
 	}
 }

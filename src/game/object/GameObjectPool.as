@@ -1,7 +1,7 @@
 package game.object
 {
 	import game.core.Root;
-	import game.scene.MainGameScene;
+	import game.scene.GameScene;
 	
 	import starling.display.Sprite;
 
@@ -16,7 +16,7 @@ package game.object
 		public static const LAYER_MESSAGE:String = "MESSAGE";
 		
 		private var target:Sprite;
-		public var scene:MainGameScene;
+		public var scene:GameScene;
 		
 		private var bgLayer:GameObjectLayer;
 		private var shadowLayer:GameObjectLayer;
@@ -25,7 +25,7 @@ package game.object
 		private var particleLayer:GameObjectLayer;
 		private var messageLayer:GameObjectLayer;
 		
-		public function GameObjectPool(target:Sprite, scene:MainGameScene)
+		public function GameObjectPool(target:Sprite, scene:GameScene)
 		{
 			this.target = target;
 			this.scene = scene;
