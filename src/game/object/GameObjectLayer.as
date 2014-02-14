@@ -30,9 +30,12 @@ package game.object
 			{
 				container[i].main();
 			}
-			
+		}
+		
+		public function update():void
+		{
 			// 削除フラグが立っているものを削除
-			for (i = 0; i < container.length; i++) 
+			for (var i:int = 0; i < container.length; i++) 
 			{
 				if(container[i].exists() == false)
 				{

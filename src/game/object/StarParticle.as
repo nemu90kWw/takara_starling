@@ -11,7 +11,9 @@ package game.object
 		override public function initialize():void
 		{
 			count = 0;
-			rot = Math.PI / 180 * (Math.random() * 20 - 10);
+			
+			rotation = (Math.PI / 180) * (Math.random() * 360);
+			rot = (Math.PI / 180) * (Math.random() * 20 - 10);
 			
 			setGraphic("OBJ_STAR");
 		}

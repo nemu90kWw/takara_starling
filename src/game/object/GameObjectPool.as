@@ -55,6 +55,19 @@ package game.object
 			shadowLayer.execute();
 			particleLayer.execute();
 			messageLayer.execute();
+			
+			// 全て実行後、削除更新処理
+			update();
+		}
+		
+		public function update():void
+		{
+			bgLayer.update();
+			takaraLayer.update();
+			playerLayer.update();
+			shadowLayer.update();
+			particleLayer.update();
+			messageLayer.update();
 		}
 		
 		public function addObject(obj:GameObject, layer:String):void
