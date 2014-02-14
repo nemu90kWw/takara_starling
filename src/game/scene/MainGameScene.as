@@ -3,6 +3,7 @@ package game.scene
 	import game.core.GameData;
 	import game.core.MasterViewPort;
 	import game.object.BackGround;
+	import game.object.FadeOut;
 	import game.object.GameObject;
 	import game.object.GameObjectPool;
 	import game.object.GameOver;
@@ -70,10 +71,12 @@ package game.scene
 			
 			objPool.addObject(new Player(), GameObjectPool.LAYER_PLAYER);
 			
-			for (var i:int = 0; i < 100; i++) 
+			for (var i:int = 0; i < 10; i++) 
 			{
 				addTakara();
 			}
+			
+			objPool.run();
 		}
 		
 		// --------------------------------//
@@ -117,11 +120,20 @@ package game.scene
 			if(count == 0)
 			{
 				setMessage(new GameOver());
+				objPool.lock = true;
 			}
 			
 			if(count == 100)
 			{
+				objPool.addObject(new FadeOut(), GameObjectPool.LAYER_SCREEN);
+			}
+			
+			objPool.run();
+			
+			if(count == 150)
+			{
 				root.changeScene(new TitleScene(target));
+				return;
 			}
 		}
 		
