@@ -3,6 +3,7 @@ package game.scene
 	import game.core.GameData;
 	import game.core.MasterViewPort;
 	import game.object.BackGround;
+	import game.object.GameObject;
 	import game.object.GameObjectPool;
 	import game.object.GameOver;
 	import game.object.LevelUp;
@@ -27,7 +28,7 @@ package game.scene
 		
 		private var scoreText:Text;
 		private var missText:Text;
-		private var levelUpMessage:LevelUp;
+		private var centerMessage:GameObject;
 		
 		public function MainGameScene(target:Sprite)
 		{
@@ -68,6 +69,11 @@ package game.scene
 			takara.rot = 0.01;
 			
 			objPool.addObject(new Player(), GameObjectPool.LAYER_PLAYER);
+			
+			for (var i:int = 0; i < 100; i++) 
+			{
+				addTakara();
+			}
 		}
 		
 		// --------------------------------//
@@ -93,8 +99,7 @@ package game.scene
 				levelUpBorder += level + 1;
 				addTakara();
 				
-				levelUpMessage = new LevelUp();
-				objPool.addObject(levelUpMessage, GameObjectPool.LAYER_MESSAGE);
+				setMessage(new LevelUp());
 			}
 			
 			objPool.run();
@@ -111,13 +116,7 @@ package game.scene
 		{
 			if(count == 0)
 			{
-				if(levelUpMessage != null)
-				{
-					levelUpMessage.vanish();
-					objPool.update();
-				}
-				
-				objPool.addObject(new GameOver(), GameObjectPool.LAYER_MESSAGE);
+				setMessage(new GameOver());
 			}
 			
 			if(count == 100)
@@ -148,6 +147,9 @@ package game.scene
 			gamedata.miss++;
 		}
 		
+		// --------------------------------//
+		// オブジェクト操作
+		// --------------------------------//
 		public function addTakara():Takara
 		{
 			var takara:Takara = new Takara();
@@ -160,6 +162,18 @@ package game.scene
 			
 			objPool.addObject(takara, GameObjectPool.LAYER_TAKARA);
 			return takara;
+		}
+		
+		public function setMessage(message:GameObject):void
+		{
+			if(centerMessage != null)
+			{
+				centerMessage.vanish();
+				objPool.update();
+			}
+			
+			objPool.addObject(message, GameObjectPool.LAYER_MESSAGE);
+			centerMessage = message;
 		}
 	}
 }
