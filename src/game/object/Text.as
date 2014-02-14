@@ -12,7 +12,7 @@ package game.object
 		
 		public function Text()
 		{
-			textField = new TextField(MasterViewPort.STAGE_WIDTH, 120, "", "BitmapFont", 84);
+			textField = new TextField(MasterViewPort.STAGE_WIDTH, 200, "", "Caslon", 144);
 			addChild(textField);
 			
 			textField.hAlign = HAlign.LEFT;

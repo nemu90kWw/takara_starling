@@ -9,12 +9,15 @@ package game.object
 		private var count:int;
 		private var destX:int;
 		
+		public var operate:Boolean;
+		
 		override public function initialize():void
 		{
 			x = 540;
 			y = 1200;
 			
 			destX = 540;
+			operate = false;
 			
 			setGraphic("OBJ_PLAYER");
 			addObject(new Shadow(this), GameObjectPool.LAYER_SHADOW);
@@ -23,7 +26,7 @@ package game.object
 		override public function main():void
 		{
 			// 移動
-			if(Input.down == true) {
+			if(Input.down == true && operate == true) {
 				destX = Input.touchX;
 			}
 			

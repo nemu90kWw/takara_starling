@@ -171,7 +171,7 @@ package game.scene
 			if(gamedata.miss >= 3) { return; }
 			
 			var obj:MissCount = new MissCount();
-			obj.x = missText.x + 260 + gamedata.miss * 80;
+			obj.x = missText.x + 280 + gamedata.miss * 70;
 			obj.y = missText.y + 50;
 			objPool.addObject(obj, GameObjectPool.LAYER_MESSAGE);
 			

@@ -1,7 +1,8 @@
 package game.core
 {
-	import game.scene.SceneBase;
+	import game.resources.SpriteSheet;
 	import game.scene.MainGameScene;
+	import game.scene.SceneBase;
 	import game.scene.SceneController;
 	import game.scene.TitleScene;
 	
@@ -26,6 +27,8 @@ package game.core
 			removeEventListener(Event.ROOT_CREATED, onAddedToStage);
 			
 			Input.registerListener(stage);
+			
+			SpriteSheet.registerBitmapFont();
 			
 			scene = new SceneController(new TitleScene(this));
 			

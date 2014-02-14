@@ -5,6 +5,7 @@ package
 	import flash.geom.Rectangle;
 	
 	import game.core.MasterViewPort;
+	import game.resources.SpriteSheet;
 	
 	import starling.core.Starling;
 	import starling.display.BlendMode;
