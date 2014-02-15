@@ -23,9 +23,9 @@ package game.object
 		
 		override public function main():void
 		{
-			currentFrame = Math.floor(count / 2) % 3;
+			currentFrame = Math.floor(count / 2) % totalFrames;
 			
-			if(count == 4 * 3 * 2)
+			if(count == (2 * totalFrames) * 4)
 			{
 				vanish();
 			}

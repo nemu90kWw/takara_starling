@@ -5,6 +5,7 @@ package game.object
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
+	import starling.textures.Texture;
 
 	public class GameObject extends Sprite
 	{
@@ -12,7 +13,7 @@ package game.object
 		private var deleteflag:Boolean;
 		
 		private var image:Image;
-		private var imageName:String;
+		private var imageList:Vector.<Texture>;
 		
 		private var _currentFrame:int;
 		
@@ -68,18 +69,21 @@ package game.object
 		// --------------------------------//
 		public function setGraphic(name:String):void
 		{
-			imageName = name;
-			
 			image = SpriteSheet.getImage(name);
+			imageList = SpriteSheet.getTextureList(name);
 			addChild(image);
 		}
 		
 		public function get currentFrame():int {return _currentFrame;}
 		public function set currentFrame(value:int):void
 		{
-			// TODO: 内部で毎回Imageがnewされるため改善の余地あり
-			image.texture = SpriteSheet.getImage(imageName, value).texture;
+			image.texture = imageList[value];
 			_currentFrame = value;
+		}
+		
+		public function get totalFrames():int
+		{
+			return imageList.length;
 		}
 		
 		// --------------------------------//

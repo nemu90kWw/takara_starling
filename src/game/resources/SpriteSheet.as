@@ -24,9 +24,10 @@ package game.resources
 		private static var SpriteFormat:Class;
 		
 		private static var atlas:TextureAtlas;
+		private static var textureList:Object;
 		private static var pivotList:Object;
 		
-		public static function getTextureAtlas():TextureAtlas
+		private static function registerTextureAtlas():void
 		{
 			if (atlas == null)
 			{
@@ -35,18 +36,36 @@ package game.resources
 				
 				atlas = new TextureAtlas(Texture.fromBitmap(spriteBitmap), spriteFormat);
 				
-				// TextureAtlasはXMLから中心点を読み込まないため、別個に保存
+				textureList = new Object();
 				pivotList = {};
 				for each(var subTexture:XML in spriteFormat.children())
 				{
 					var name:String = subTexture.@name;
+					var label:String = name.slice(0, -4);
+					var frame:String = name.slice(-4);
 					
-					// 中心点がない先頭フレーム以外は除外
-					if(name.slice(-4) != "0000") {continue;}
+					// Textureの事前キャッシュ
+					if(textureList[label] == null) {
+						textureList[label] = new Vector.<Texture>();
+					}
+					
+					textureList[label].push(new Image(atlas.getTexture(name)).texture);
+					
+					// TextureAtlasはXMLから中心点を読み込まないため、別個に保存
+					if(frame != "0000") {
+						continue;	// 中心点がない先頭フレーム以外は除外
+					}
 					
 					// フレーム番号を外して保存
-					pivotList[name.slice(0, -4)] = new Point(subTexture.@pivotX, subTexture.@pivotY);
+					pivotList[label] = new Point(subTexture.@pivotX, subTexture.@pivotY);
 				}
+			}
+		}
+		
+		public static function getTextureAtlas():TextureAtlas
+		{
+			if (atlas == null) {
+				registerTextureAtlas();
 			}
 			
 			return atlas;
@@ -60,7 +79,7 @@ package game.resources
 			
 			TextField.registerBitmapFont(font, "Caslon");
 		}
-
+		
 		public static function getImage(name:String, frame:int=0):Image
 		{
 			// フレーム番号を4桁でゼロパディングして読み込む
@@ -71,6 +90,15 @@ package game.resources
 			image.pivotY = pivotList[name].y;
 			
 			return image;
+		}
+		
+		public static function getTextureList(name:String):Vector.<Texture>
+		{
+			if (atlas == null) {
+				registerTextureAtlas();
+			}
+			
+			return textureList[name];
 		}
 	}
 }
