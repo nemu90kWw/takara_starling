@@ -1,6 +1,7 @@
 package game.scene
 {
 	import game.core.Input;
+	import game.core.MasterViewport;
 	import game.object.BackGround;
 	import game.object.FadeOut;
 	import game.object.GameObjectPool;
@@ -38,8 +39,8 @@ package game.scene
 			credit = new Text();
 			credit.text = "(C)nemu90kWw.";
 			credit.hAlign = HAlign.RIGHT;
-			credit.y = 1360;
-			credit.size = 42;
+			credit.y = MasterViewport.currentViewport.bottom - 60;
+			credit.size = 64;
 			objPool.addObject(credit, GameObjectPool.LAYER_MESSAGE);
 			
 			decide = false;

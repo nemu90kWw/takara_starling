@@ -1,6 +1,6 @@
 package game.object
 {
-	import game.core.MasterViewPort;
+	import game.core.MasterViewport;
 	
 	import starling.display.Quad;
 
@@ -10,9 +10,9 @@ package game.object
 		
 		public function FadeOut()
 		{
-			effect = new Quad(MasterViewPort.STAGE_WIDTH, MasterViewPort.STAGE_HEIGHT, 0);
-			effect.x = 0;
-			effect.y = 0;
+			effect = new Quad(MasterViewport.currentViewport.width, MasterViewport.currentViewport.height, 0);
+			effect.x = MasterViewport.currentViewport.x;
+			effect.y = MasterViewport.currentViewport.y;
 			effect.alpha = 0;
 			addChild(effect);
 		}

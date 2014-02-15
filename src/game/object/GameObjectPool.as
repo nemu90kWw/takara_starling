@@ -1,6 +1,6 @@
 package game.object
 {
-	import game.core.MasterViewPort;
+	import game.core.MasterViewport;
 	import game.scene.SceneBase;
 	
 	import starling.display.Sprite;

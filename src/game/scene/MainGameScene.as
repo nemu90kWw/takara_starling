@@ -1,7 +1,7 @@
 package game.scene
 {
 	import game.core.GameData;
-	import game.core.MasterViewPort;
+	import game.core.MasterViewport;
 	import game.object.BackGround;
 	import game.object.FadeOut;
 	import game.object.GameObject;
@@ -55,10 +55,10 @@ package game.scene
 			missText = new Text();
 			
 			scoreText.x = 0;
-			scoreText.y = MasterViewPort.STAGE_HEIGHT - 100;
+			scoreText.y = MasterViewport.currentViewport.bottom - 100;
 			scoreText.text = "SCORE:0";
 			missText.x = 620;
-			missText.y = MasterViewPort.STAGE_HEIGHT - 100;
+			missText.y = MasterViewport.currentViewport.bottom - 100;
 			missText.text = "MISS:";
 			
 			objPool.addObject(scoreText, GameObjectPool.LAYER_MESSAGE);
@@ -69,7 +69,7 @@ package game.scene
 			objPool.addObject(player, GameObjectPool.LAYER_PLAYER);
 			
 			var takara:Takara = addTakara();
-			takara.x = MasterViewPort.STAGE_WIDTH / 2 + 10;
+			takara.x = MasterViewport.STAGE_WIDTH / 2 + 10;
 			takara.y = 128;
 			takara.vx = 0;
 			takara.vy = 0;
@@ -193,7 +193,7 @@ package game.scene
 			var takara:Takara = new Takara();
 			
 			takara.x = 270 + Math.random() * 540;
-			takara.y = -200;
+			takara.y = MasterViewport.maxViewport.top - 120;
 			takara.vx = 4 - Math.random() * 8;
 			takara.rotation = (Math.PI / 180) * (Math.random() * 360);
 			takara.rot = (Math.PI / 180) * (Math.random() * 2 - 1);

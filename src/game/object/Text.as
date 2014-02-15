@@ -1,6 +1,6 @@
 package game.object
 {
-	import game.core.MasterViewPort;
+	import game.core.MasterViewport;
 	
 	import starling.text.TextField;
 	import starling.utils.HAlign;
@@ -12,7 +12,7 @@ package game.object
 		
 		public function Text()
 		{
-			textField = new TextField(MasterViewPort.STAGE_WIDTH, 200, "", "Caslon", 144);
+			textField = new TextField(MasterViewport.STAGE_WIDTH, 200, "", "Caslon", 144);
 			addChild(textField);
 			
 			textField.hAlign = HAlign.LEFT;

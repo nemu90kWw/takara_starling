@@ -21,13 +21,13 @@ package game.core
 			switch(e.touches[0].phase)
 			{
 			case TouchPhase.BEGAN:
-				touchX = e.touches[0].globalX;
-				touchY = e.touches[0].globalY;
+				touchX = e.touches[0].globalX / MasterViewport.scale;
+				touchY = e.touches[0].globalY / MasterViewport.scale;
 				down = true;
 				break;
 			case TouchPhase.MOVED:
-				touchX = e.touches[0].globalX;
-				touchY = e.touches[0].globalY;
+				touchX = e.touches[0].globalX / MasterViewport.scale;
+				touchY = e.touches[0].globalY / MasterViewport.scale;
 				break;
 			case TouchPhase.ENDED:
 				down = false;

@@ -59,7 +59,6 @@ package game.resources
 			var font:BitmapFont = new BitmapFont(spriteBitmap, spriteFormat);
 			
 			TextField.registerBitmapFont(font, "Caslon");
-			trace(font.size);
 		}
 
 		public static function getImage(name:String, frame:int=0):Image

@@ -1,14 +1,14 @@
 package game.object
 {
-	import game.core.MasterViewPort;
+	import game.core.MasterViewport;
 
 	public class ReadyGo extends GameObject
 	{
 		private var count:int;
 		public function ReadyGo()
 		{
-			x = MasterViewPort.STAGE_WIDTH / 2;
-			y = MasterViewPort.STAGE_HEIGHT / 2;
+			x = MasterViewport.STAGE_WIDTH / 2;
+			y = MasterViewport.STAGE_HEIGHT / 2;
 			blendMode = "subtract";
 			
 			count = 0;

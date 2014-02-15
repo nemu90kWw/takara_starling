@@ -1,6 +1,6 @@
 package game.object
 {
-	import game.core.MasterViewPort;
+	import game.core.MasterViewport;
 
 	public class Takara extends GameObject
 	{
@@ -48,9 +48,9 @@ package game.object
 				vx = -vx/1.5;
 				rot /= 1.5;
 			}
-			if(x > MasterViewPort.STAGE_WIDTH)
+			if(x > MasterViewport.STAGE_WIDTH)
 			{
-				x = MasterViewPort.STAGE_WIDTH;
+				x = MasterViewport.STAGE_WIDTH;
 				
 				vx = -vx/1.5;
 				rot /= 1.5;
