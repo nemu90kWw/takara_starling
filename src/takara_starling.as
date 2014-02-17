@@ -5,7 +5,6 @@ package
 	import flash.geom.Rectangle;
 	
 	import game.core.MasterViewport;
-	import game.resources.SpriteSheet;
 	
 	import starling.core.Starling;
 	import starling.display.BlendMode;
@@ -15,6 +14,10 @@ package
 	[SWF(frameRate="60", backgroundColor="#000000"]
 	public class takara_starling extends Sprite
 	{
+		private const STAGE_WIDTH:int = 1080;
+		private const STAGE_MIN_HEIGHT:int = 1440;
+		private const STAGE_MAX_HEIGHT:int = 1920;
+		
 		private var star:Starling;
 		
 		public function takara_starling()
@@ -26,34 +29,34 @@ package
 			{
 				// 4:3より横に長い場合、黒帯付きの4:3表示でビューポート作成
 				star = new Starling(MasterViewport, stage, RectangleUtil.fit(
-					new Rectangle(0, 0, 1080, 1440),
+					new Rectangle(0, 0, STAGE_WIDTH, STAGE_MIN_HEIGHT),
 					new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight),
 					ScaleMode.SHOW_ALL
 				));
-				star.stage.stageWidth = 1440;
-				star.stage.stageHeight = 1440;
+				star.stage.stageWidth = STAGE_MIN_HEIGHT;
+				star.stage.stageHeight = STAGE_MIN_HEIGHT;
 				
 				MasterViewport.scale = 1;
-				MasterViewport.maxHeight = 1440;
+				MasterViewport.maxHeight = STAGE_MIN_HEIGHT;
 			}
 			else if(stage.fullScreenWidth / stage.fullScreenHeight < 9 / 16)
 			{
 				// 16:9より縦に長い場合、黒帯付きの16:9表示でビューポート作成
 				star = new Starling(MasterViewport, stage, RectangleUtil.fit(
-					new Rectangle(0, 0, 1080, 1920),
+					new Rectangle(0, 0, STAGE_WIDTH, STAGE_MAX_HEIGHT),
 					new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight),
 					ScaleMode.SHOW_ALL
 				));
-				star.stage.stageWidth = 1080;
-				star.stage.stageHeight = 1920;
+				star.stage.stageWidth = STAGE_WIDTH;
+				star.stage.stageHeight = STAGE_MAX_HEIGHT;
 				
 				MasterViewport.scale = 1;
-				MasterViewport.maxHeight = 1920;
+				MasterViewport.maxHeight = STAGE_MAX_HEIGHT;
 			}
 			else	
 			{
 				// 画面比率が4:3から16:9に収まる場合はビューポートを普通に生成
-				MasterViewport.scale = (stage.fullScreenWidth / 1080);
+				MasterViewport.scale = (stage.fullScreenWidth / STAGE_WIDTH);
 				MasterViewport.maxHeight = stage.fullScreenHeight / MasterViewport.scale;
 				
 				star = new Starling(MasterViewport, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));

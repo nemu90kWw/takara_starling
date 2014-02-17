@@ -69,7 +69,7 @@ package game.scene
 			objPool.addObject(player, GameObjectPool.LAYER_PLAYER);
 			
 			var takara:Takara = addTakara();
-			takara.x = MasterViewport.STAGE_WIDTH / 2 + 10;
+			takara.x = takara.stageWidth / 2 + 10;
 			takara.y = 128;
 			takara.vx = 0;
 			takara.vy = 0;

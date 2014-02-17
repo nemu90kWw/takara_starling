@@ -14,8 +14,8 @@ package game.object
 		{
 			count = 0;
 			
-			x = MasterViewport.STAGE_WIDTH / 2;
-			y = MasterViewport.STAGE_HEIGHT / 2;
+			x = stageWidth / 2;
+			y = stageHeight / 2;
 			blendMode = "subtract";
 			
 			setGraphic("MSG_LEVELUP");

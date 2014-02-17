@@ -17,6 +17,16 @@ package game.object
 		
 		private var _currentFrame:int;
 		
+		public function get stageWidth():int
+		{
+			return 1080;
+		}
+		
+		public function get stageHeight():int
+		{
+			return 1920;
+		}
+		
 		// --------------------------------//
 		// 共通処理
 		// --------------------------------//

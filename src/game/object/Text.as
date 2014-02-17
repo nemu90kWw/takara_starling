@@ -12,7 +12,7 @@ package game.object
 		
 		public function Text()
 		{
-			textField = new TextField(MasterViewport.STAGE_WIDTH, 200, "", "Caslon", 144);
+			textField = new TextField(stageWidth, 200, "", "Caslon", 144);
 			addChild(textField);
 			
 			textField.hAlign = HAlign.LEFT;

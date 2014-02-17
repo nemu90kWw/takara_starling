@@ -48,9 +48,9 @@ package game.object
 				vx = -vx/1.5;
 				rot /= 1.5;
 			}
-			if(x > MasterViewport.STAGE_WIDTH)
+			if(x > stageWidth)
 			{
-				x = MasterViewport.STAGE_WIDTH;
+				x = stageWidth;
 				
 				vx = -vx/1.5;
 				rot /= 1.5;
