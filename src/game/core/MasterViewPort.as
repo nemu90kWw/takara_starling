@@ -31,7 +31,7 @@ package game.core
 		
 		private function onAddedToStage(e:Event):void
 		{
-			removeEventListener(Event.ROOT_CREATED, onAddedToStage);
+			removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			
 			// ビットマップフォント追加
 			SpriteSheet.registerBitmapFont();
