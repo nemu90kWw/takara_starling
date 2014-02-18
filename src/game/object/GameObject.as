@@ -24,7 +24,7 @@ package game.object
 		
 		public function get stageHeight():int
 		{
-			return 1920;
+			return 1440;
 		}
 		
 		// --------------------------------//

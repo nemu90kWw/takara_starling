@@ -15,10 +15,6 @@ package game.core
 	// Starlingで作成される本体
 	public class MasterViewport extends Sprite
 	{
-		// 4:3
-		//public static const STAGE_WIDTH:int = 1080;
-		//public static const STAGE_HEIGHT:int = 1440;
-		
 		public static var scale:Number;
 		public static var maxHeight:int;
 		
