@@ -58,11 +58,14 @@ package game.scene
 			
 			if(decide == true)
 			{
-				if(count % 4 < 2) {
-					startButton.visible = false;
-				}
-				else {
-					startButton.visible = true;
+				if(startButton.exists() == true)
+				{
+					if(count % 4 < 2) {
+						startButton.visible = false;
+					}
+					else {
+						startButton.visible = true;
+					}
 				}
 				
 				if(count == 30)

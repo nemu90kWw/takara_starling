@@ -7,10 +7,12 @@ package game.object
 	import starling.display.Sprite;
 	import starling.textures.Texture;
 
-	public class GameObject extends Sprite
+	public class GameObject
 	{
 		public var pool:GameObjectPool;
 		private var deleteflag:Boolean;
+		
+		public var graphic:Sprite = new Sprite();
 		
 		private var image:Image;
 		private var imageList:Vector.<Texture>;
@@ -28,6 +30,30 @@ package game.object
 		}
 		
 		// --------------------------------//
+		// 委譲処理
+		// --------------------------------//
+		public function get x():Number {return graphic.x;}
+		public function set x(value:Number):void {graphic.x = value;}
+		
+		public function get y():Number {return graphic.y;}
+		public function set y(value:Number):void {graphic.y = value;}
+		
+		public function get scaleX():Number {return graphic.scaleX;}
+		public function set scaleX(value:Number):void {graphic.scaleX = value;}
+		
+		public function get scaleY():Number {return graphic.scaleY;}
+		public function set scaleY(value:Number):void {graphic.scaleY = value;}
+		
+		public function get rotation():Number {return graphic.rotation;}
+		public function set rotation(value:Number):void {graphic.rotation = value;}
+		
+		public function get alpha():Number {return graphic.alpha;}
+		public function set alpha(value:Number):void {graphic.alpha = value;}
+		
+		public function get visible():Boolean {return graphic.visible;}
+		public function set visible(value:Boolean):void {graphic.visible = value;}
+		
+		// --------------------------------//
 		// 共通処理
 		// --------------------------------//
 		public function initialize():void
@@ -40,9 +66,10 @@ package game.object
 			// 毎フレーム処理
 		}
 		
-		override public function dispose():void
+		public function dispose():void
 		{
-			super.dispose();
+			graphic.removeChildren();
+			graphic = null;
 			
 			if(image != null)
 			{
@@ -94,7 +121,7 @@ package game.object
 		{
 			image = SpriteSheet.getImage(name);
 			imageList = SpriteSheet.getTextureList(name);
-			addChild(image);
+			graphic.addChild(image);
 		}
 		
 		public function get currentFrame():int {return _currentFrame;}

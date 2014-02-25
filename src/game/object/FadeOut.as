@@ -17,7 +17,7 @@ package game.object
 			effect.x = MasterViewport.currentViewport.x;
 			effect.y = MasterViewport.currentViewport.y;
 			effect.alpha = 0;
-			addChild(effect);
+			graphic.addChild(effect);
 		}
 		
 		override public function main():void

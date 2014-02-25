@@ -13,7 +13,7 @@ package game.object
 		public function Text()
 		{
 			textField = new TextField(stageWidth, 200, "", "Caslon", 144);
-			addChild(textField);
+			graphic.addChild(textField);
 			
 			textField.hAlign = HAlign.LEFT;
 			textField.vAlign = VAlign.TOP;

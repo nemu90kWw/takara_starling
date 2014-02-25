@@ -11,7 +11,7 @@ package game.object
 			
 			x = stageWidth / 2;
 			y = stageHeight / 2;
-			blendMode = "subtract";
+			graphic.blendMode = "subtract";
 			
 			setGraphic("MSG_GAMEOVER");
 		}

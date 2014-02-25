@@ -127,8 +127,8 @@ package game.object
 			{
 				if(container[i].exists() == false)
 				{
+					container[i].graphic.parent.removeChild(container[i].graphic);
 					container[i].dispose();
-					container[i].parent.removeChild(container[i]);
 					container.splice(i, 1);
 					i--;
 				}
@@ -174,13 +174,13 @@ package game.object
 		{
 			switch(layer)
 			{
-			case LAYER_BG: bgLayer.addChild(obj); return;
-			case LAYER_SHADOW: shadowLayer.addChild(obj); return;
-			case LAYER_TAKARA: takaraLayer.addChild(obj); return;
-			case LAYER_PLAYER: playerLayer.addChild(obj); return;
-			case LAYER_PARTICLE: particleLayer.addChild(obj); return;
-			case LAYER_MESSAGE: messageLayer.addChild(obj); return;
-			case LAYER_SCREEN: screenLayer.addChild(obj); return;
+			case LAYER_BG: bgLayer.addChild(obj.graphic); return;
+			case LAYER_SHADOW: shadowLayer.addChild(obj.graphic); return;
+			case LAYER_TAKARA: takaraLayer.addChild(obj.graphic); return;
+			case LAYER_PLAYER: playerLayer.addChild(obj.graphic); return;
+			case LAYER_PARTICLE: particleLayer.addChild(obj.graphic); return;
+			case LAYER_MESSAGE: messageLayer.addChild(obj.graphic); return;
+			case LAYER_SCREEN: screenLayer.addChild(obj.graphic); return;
 			}
 			
 			trace("ERROR: 無効なレイヤー"+layer+"が指定されました。"+getQualifiedClassName(obj)+"は表示ツリーに追加されません。");

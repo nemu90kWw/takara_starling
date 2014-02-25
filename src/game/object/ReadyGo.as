@@ -13,7 +13,7 @@ package game.object
 			
 			x = stageWidth / 2;
 			y = stageHeight / 2;
-			blendMode = "subtract";
+			graphic.blendMode = "subtract";
 			
 			count = 0;
 			visible = false;
