@@ -10,6 +10,9 @@ package game.object
 		
 		override public function initialize():void
 		{
+			registerObject(GameObjectPool.PRIO_EFFECT);
+			registerGraphic(GameObjectPool.LAYER_PARTICLE);
+			
 			count = 0;
 			
 			rotation = (Math.PI / 180) * (Math.random() * 360);

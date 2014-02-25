@@ -8,8 +8,11 @@ package game.object
 	{
 		private var effect:Quad;
 		
-		public function FadeOut()
+		override public function initialize():void
 		{
+			registerObject(GameObjectPool.PRIO_SYSTEM);
+			registerGraphic(GameObjectPool.LAYER_SCREEN);
+			
 			effect = new Quad(MasterViewport.currentViewport.width, MasterViewport.currentViewport.height, 0);
 			effect.x = MasterViewport.currentViewport.x;
 			effect.y = MasterViewport.currentViewport.y;

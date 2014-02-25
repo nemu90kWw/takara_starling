@@ -11,6 +11,9 @@ package game.object
 		
 		override public function initialize():void
 		{
+			registerObject(GameObjectPool.PRIO_EFFECT);
+			registerGraphic(GameObjectPool.LAYER_SHADOW);
+			
 			y = 1310;
 			setGraphic("OBJ_SHADOW");
 		}

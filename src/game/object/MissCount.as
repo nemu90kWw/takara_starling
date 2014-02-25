@@ -2,8 +2,11 @@ package game.object
 {
 	public class MissCount extends GameObject
 	{
-		public function MissCount()
+		override public function initialize():void
 		{
+			registerObject(GameObjectPool.PRIO_SYSTEM);
+			registerGraphic(GameObjectPool.LAYER_MESSAGE);
+			
 			setGraphic("OBJ_TAKARA");
 			
 			scaleX = 0.5;

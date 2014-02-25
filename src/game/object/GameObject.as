@@ -52,16 +52,29 @@ package game.object
 		}
 		
 		// --------------------------------//
-		// オブジェクト操作
+		// コンテナへの登録処理
 		// --------------------------------//
-		public function addObject(obj:GameObject, layer:String):void
+		public function registerObject(prio:String):void
 		{
-			pool.addObject(obj, layer);
+			pool.registerObject(this, prio);
 		}
 		
-		public function getObjectList(layer:String):Vector.<GameObject>
+		public function registerGraphic(layer:String):void
 		{
-			return pool.getObjectList(layer);
+			pool.registerGraphic(this, layer);
+		}
+		
+		// --------------------------------//
+		// オブジェクト操作
+		// --------------------------------//
+		public function addObject(obj:GameObject):void
+		{
+			pool.addObject(obj);
+		}
+		
+		public function getObjectList(prio:String):Vector.<GameObject>
+		{
+			return pool.getObjectList(prio);
 		}
 		
 		public function vanish():void

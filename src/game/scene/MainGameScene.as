@@ -48,7 +48,7 @@ package game.scene
 			state = STATE_READY;
 			
 			// 背景
-			objPool.addObject(new BackGround(), GameObjectPool.LAYER_BG);
+			objPool.addObject(new BackGround());
 			
 			// ステータス表示
 			scoreText = new Text();
@@ -61,12 +61,12 @@ package game.scene
 			missText.y = MasterViewport.currentViewport.bottom - 100;
 			missText.text = "MISS:";
 			
-			objPool.addObject(scoreText, GameObjectPool.LAYER_MESSAGE);
-			objPool.addObject(missText, GameObjectPool.LAYER_MESSAGE);
+			objPool.addObject(scoreText);
+			objPool.addObject(missText);
 			
 			// 初期配置
 			player = new Player();
-			objPool.addObject(player, GameObjectPool.LAYER_PLAYER);
+			objPool.addObject(player);
 			
 			var takara:Takara = addTakara();
 			takara.x = takara.stageWidth / 2 + 10;
@@ -144,7 +144,7 @@ package game.scene
 			
 			if(count == 150)
 			{
-				objPool.addObject(new FadeOut(), GameObjectPool.LAYER_SCREEN);
+				objPool.addObject(new FadeOut());
 			}
 			
 			objPool.run();
@@ -173,13 +173,13 @@ package game.scene
 			var obj:MissCount = new MissCount();
 			obj.x = missText.x + 280 + gamedata.miss * 70;
 			obj.y = missText.y + 50;
-			objPool.addObject(obj, GameObjectPool.LAYER_MESSAGE);
+			objPool.addObject(obj);
 			
 			gamedata.miss++;
 			
 			// タカラギコが全て無くなった場合、補填する
 			objPool.update();
-			if(objPool.getObjectList(GameObjectPool.LAYER_TAKARA).length == 0)
+			if(objPool.getObjectList(GameObjectPool.PRIO_TAKARA).length == 0)
 			{
 				addTakara();
 			}
@@ -198,7 +198,7 @@ package game.scene
 			takara.rotation = (Math.PI / 180) * (Math.random() * 360);
 			takara.rot = (Math.PI / 180) * (Math.random() * 2 - 1);
 			
-			objPool.addObject(takara, GameObjectPool.LAYER_TAKARA);
+			objPool.addObject(takara);
 			return takara;
 		}
 		
@@ -210,7 +210,7 @@ package game.scene
 				objPool.update();
 			}
 			
-			objPool.addObject(message, GameObjectPool.LAYER_MESSAGE);
+			objPool.addObject(message);
 			centerMessage = message;
 		}
 	}

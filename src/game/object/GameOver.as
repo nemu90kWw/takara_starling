@@ -4,8 +4,11 @@ package game.object
 
 	public class GameOver extends GameObject
 	{
-		public function GameOver()
+		override public function initialize():void
 		{
+			registerObject(GameObjectPool.PRIO_SYSTEM);
+			registerGraphic(GameObjectPool.LAYER_MESSAGE);
+			
 			x = stageWidth / 2;
 			y = stageHeight / 2;
 			blendMode = "subtract";

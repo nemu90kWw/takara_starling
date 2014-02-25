@@ -61,10 +61,10 @@ package
 				
 				star = new Starling(MasterViewport, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
 			}
-			
+			/*
 			star.showStats = true;
 			star.showStatsAt("left", "top", 2);
-			
+			*/
 			star.start();
 		}
 	}

@@ -13,8 +13,8 @@ package game.object
 		
 		override public function initialize():void
 		{
-			//x = 540;
-			//y = 200;
+			registerObject(GameObjectPool.PRIO_TAKARA);
+			registerGraphic(GameObjectPool.LAYER_TAKARA);
 			
 			vx = Math.random() * 10 - 5;
 			vy = 0;
@@ -23,7 +23,7 @@ package game.object
 			setGraphic("OBJ_TAKARA");
 			
 			shadow = new Shadow(this);
-			addObject(shadow, GameObjectPool.LAYER_SHADOW);
+			addObject(shadow);
 		}
 		
 		override public function main():void
@@ -69,7 +69,7 @@ package game.object
 					particle.dir = Math.random() * 360;
 					particle.speed = 8 + Math.random() * 32;
 					
-					addObject(particle, GameObjectPool.LAYER_PARTICLE);
+					addObject(particle);
 				}
 				
 				vanish();

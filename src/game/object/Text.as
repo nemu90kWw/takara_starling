@@ -19,6 +19,12 @@ package game.object
 			textField.vAlign = VAlign.TOP;
 		}
 		
+		override public function initialize():void
+		{
+			registerObject(GameObjectPool.PRIO_SYSTEM);
+			registerGraphic(GameObjectPool.LAYER_MESSAGE);
+		}
+		
 		// --------------------------------//
 		// プロパティの委譲
 		// --------------------------------//

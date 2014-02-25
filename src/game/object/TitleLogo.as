@@ -2,8 +2,11 @@ package game.object
 {
 	public class TitleLogo extends GameObject
 	{
-		public function TitleLogo()
+		override public function initialize():void
 		{
+			registerObject(GameObjectPool.PRIO_SYSTEM);
+			registerGraphic(GameObjectPool.LAYER_MESSAGE);
+			
 			setGraphic("MSG_TITLE");
 		}
 	}

@@ -13,6 +13,9 @@ package game.object
 		
 		override public function initialize():void
 		{
+			registerObject(GameObjectPool.PRIO_PLAYER);
+			registerGraphic(GameObjectPool.LAYER_PLAYER);
+			
 			x = 540;
 			y = 1200;
 			
@@ -20,7 +23,7 @@ package game.object
 			operate = false;
 			
 			setGraphic("OBJ_PLAYER");
-			addObject(new Shadow(this), GameObjectPool.LAYER_SHADOW);
+			addObject(new Shadow(this));
 		}
 		
 		override public function main():void
@@ -59,7 +62,7 @@ package game.object
 			}
 			
 			// 当たり判定
-			var list:Vector.<GameObject> = getObjectList(GameObjectPool.LAYER_TAKARA);
+			var list:Vector.<GameObject> = getObjectList(GameObjectPool.PRIO_TAKARA);
 			for (var i:int = 0; i < list.length; i++) 
 			{
 				var takara:Takara = Takara(list[i]);
@@ -85,7 +88,7 @@ package game.object
 						particle.dir = Math.random() * 360;
 						particle.speed = 12 + Math.random() * 4;
 						
-						addObject(particle, GameObjectPool.LAYER_PARTICLE);
+						addObject(particle);
 					}
 					
 					addScore(10);

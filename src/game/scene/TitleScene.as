@@ -23,25 +23,25 @@ package game.scene
 		{
 			super(target);
 			
-			objPool.addObject(new BackGround(), GameObjectPool.LAYER_BG);
+			objPool.addObject(new BackGround());
 			
 			logo = new TitleLogo();
 			logo.x = 90;
 			logo.y = 180;
-			objPool.addObject(logo, GameObjectPool.LAYER_MESSAGE);
+			objPool.addObject(logo);
 			
 			startButton = new Text();
 			startButton.text = "TAP TO START";
 			startButton.hAlign = HAlign.CENTER;
 			startButton.y = 900;
-			objPool.addObject(startButton, GameObjectPool.LAYER_MESSAGE);
+			objPool.addObject(startButton);
 			
 			credit = new Text();
 			credit.text = "(C)nemu90kWw.";
 			credit.hAlign = HAlign.RIGHT;
 			credit.y = MasterViewport.currentViewport.bottom - 60;
 			credit.size = 64;
-			objPool.addObject(credit, GameObjectPool.LAYER_MESSAGE);
+			objPool.addObject(credit);
 			
 			decide = false;
 		}
@@ -68,7 +68,7 @@ package game.scene
 				if(count == 30)
 				{
 					startButton.vanish();
-					objPool.addObject(new FadeOut(), GameObjectPool.LAYER_SCREEN);
+					objPool.addObject(new FadeOut());
 				}
 				
 				if(count == 80)

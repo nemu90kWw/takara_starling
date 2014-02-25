@@ -12,6 +12,9 @@ package game.object
 		
 		override public function initialize():void
 		{
+			registerObject(GameObjectPool.PRIO_SYSTEM);
+			registerGraphic(GameObjectPool.LAYER_MESSAGE);
+			
 			count = 0;
 			
 			x = stageWidth / 2;
