@@ -1,10 +1,19 @@
 package
 {
+	import flash.desktop.NativeApplication;
 	import flash.display.Sprite;
 	import flash.display3D.Context3DBlendFactor;
+	import flash.events.Event;
+	import flash.events.KeyboardEvent;
 	import flash.geom.Rectangle;
+	import flash.media.AudioPlaybackMode;
+	import flash.media.SoundMixer;
+	import flash.ui.Keyboard;
 	
 	import game.core.MasterViewport;
+	
+	import pl.mateuszmackowiak.nativeANE.dialogs.NativeAlertDialog;
+	import pl.mateuszmackowiak.nativeANE.events.NativeDialogEvent;
 	
 	import starling.core.Starling;
 	import starling.display.BlendMode;
@@ -22,6 +31,8 @@ package
 		
 		public function takara_starling()
 		{
+			SoundMixer.audioPlaybackMode = AudioPlaybackMode.AMBIENT;
+			
 			// ブレンドに減算半透明を追加
 			BlendMode.register("subtract", Context3DBlendFactor.ZERO, Context3DBlendFactor.ONE_MINUS_SOURCE_COLOR);
 			
@@ -61,11 +72,35 @@ package
 				
 				star = new Starling(MasterViewport, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
 			}
-			/*
+			
 			star.showStats = true;
 			star.showStatsAt("left", "top", 2);
-			*/
+			
 			star.start();
+			
+			// 戻るボタンを押すと終了
+			stage.addEventListener(KeyboardEvent.KEY_DOWN, function(e:KeyboardEvent):void
+			{
+				if(e.keyCode == Keyboard.BACK)
+				{
+					try
+					{
+						NativeAlertDialog.showAlert("アプリケーションを閉じますか？", "ゲームの終了", Vector.<String>(["はい","いいえ"]),
+							function(e:NativeDialogEvent):void
+							{
+								if(e.index == "0") {
+									NativeApplication.nativeApplication.exit();
+								}
+							}
+						);
+					} 
+					catch(error:Error) 
+					{
+						// デスクトップの場合
+						NativeApplication.nativeApplication.exit();
+					}
+				}
+			});
 		}
 	}
 }
