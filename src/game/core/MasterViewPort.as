@@ -2,6 +2,7 @@ package game.core
 {
 	import flash.geom.Rectangle;
 	
+	import game.resources.BGMPlayer;
 	import game.resources.SpriteSheet;
 	import game.scene.MainGameScene;
 	import game.scene.SceneBase;
@@ -65,6 +66,7 @@ package game.core
 			// リスナー登録
 			Input.registerListener(stage);
 			stage.addEventListener(Event.ENTER_FRAME, onEnterFrame);
+			new BGMPlayer();
 		}
 		
 		private function onEnterFrame(e:Event):void
