@@ -1,11 +1,5 @@
 package game.object
 {
-	import flash.display3D.Context3DBlendFactor;
-	
-	import game.core.MasterViewport;
-	
-	import starling.display.BlendMode;
-
 	public class LevelUp extends GameObject
 	{
 		private var count:int;

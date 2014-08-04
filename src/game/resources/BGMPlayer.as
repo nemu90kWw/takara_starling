@@ -3,9 +3,7 @@ package game.resources
 	import flash.desktop.NativeApplication;
 	import flash.events.Event;
 	import flash.events.SampleDataEvent;
-	import flash.media.AudioPlaybackMode;
 	import flash.media.Sound;
-	import flash.media.SoundChannel;
 	import flash.media.SoundMixer;
 	import flash.utils.ByteArray;
 

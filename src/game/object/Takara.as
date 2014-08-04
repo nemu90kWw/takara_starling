@@ -1,7 +1,5 @@
 package game.object
 {
-	import game.core.MasterViewport;
-
 	public class Takara extends GameObject
 	{
 		private var count:int;

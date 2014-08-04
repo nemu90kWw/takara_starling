@@ -1,7 +1,5 @@
 package game.object
 {
-	import game.core.Input;
-
 	public class BackGround extends GameObject
 	{
 		override public function initialize():void

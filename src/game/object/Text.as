@@ -1,7 +1,5 @@
 package game.object
 {
-	import game.core.MasterViewport;
-	
 	import starling.text.TextField;
 	import starling.utils.HAlign;
 	import starling.utils.VAlign;

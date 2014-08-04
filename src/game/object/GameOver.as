@@ -1,7 +1,5 @@
 package game.object
 {
-	import game.core.MasterViewport;
-
 	public class GameOver extends GameObject
 	{
 		override public function initialize():void

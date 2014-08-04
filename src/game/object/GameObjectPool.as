@@ -2,10 +2,8 @@ package game.object
 {
 	import flash.utils.getQualifiedClassName;
 	
-	import game.core.MasterViewport;
 	import game.scene.SceneBase;
 	
-	import starling.display.Image;
 	import starling.display.Sprite;
 
 	public class GameObjectPool

@@ -4,7 +4,6 @@ package game.scene
 	import game.core.MasterViewport;
 	import game.object.BackGround;
 	import game.object.FadeOut;
-	import game.object.GameObjectPool;
 	import game.object.Text;
 	import game.object.TitleLogo;
 	

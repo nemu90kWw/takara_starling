@@ -3,7 +3,6 @@ package
 	import flash.desktop.NativeApplication;
 	import flash.display.Sprite;
 	import flash.display3D.Context3DBlendFactor;
-	import flash.events.Event;
 	import flash.events.KeyboardEvent;
 	import flash.geom.Rectangle;
 	import flash.media.AudioPlaybackMode;
