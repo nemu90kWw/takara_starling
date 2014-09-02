@@ -13,6 +13,7 @@ package game.scene
 	import game.object.ReadyGo;
 	import game.object.Takara;
 	import game.object.Text;
+	import game.resources.BGMPlayer;
 	
 	import starling.display.Sprite;
 	
@@ -98,6 +99,7 @@ package game.scene
 		{
 			if(count == 0)
 			{
+				BGMPlayer.play("BGM_MAIN");
 				setMessage(new ReadyGo());
 			}
 			
@@ -138,6 +140,7 @@ package game.scene
 		{
 			if(count == 0)
 			{
+				BGMPlayer.fadeOut();
 				setMessage(new GameOver());
 				objPool.lock = true;
 			}
